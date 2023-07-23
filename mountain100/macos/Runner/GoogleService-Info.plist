@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1005582649639-omrbgguqusbav7uq2coui73aljehpmtd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1005582649639-omrbgguqusbav7uq2coui73aljehpmtd</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1005582649639-gv58qielnja9ucpsh0svvig0crqg0a7p.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCrlkePNSfJpQEiTREWKzVlphNAEU8vmaQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1005582649639</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.mountain100</string>
+	<key>PROJECT_ID</key>
+	<string>mountain-e6a92</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mountain-e6a92.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1005582649639:ios:f22c554c1fbe0bd1d54102</string>
+</dict>
+</plist>
