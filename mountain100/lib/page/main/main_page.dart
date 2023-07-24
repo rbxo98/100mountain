@@ -9,6 +9,7 @@ import 'package:html/parser.dart';
 import 'package:mountain100/data/model/mountain/mountain_model.dart';
 import 'package:mountain100/data/network/service/base_service.dart';
 import 'package:mountain100/page/info/info_provider.dart';
+import 'package:mountain100/page/splash/splash_provider.dart';
 import '../../app/config/app_config.dart';
 import '../info/info_page.dart';
 import '../location/location_page.dart';
@@ -40,6 +41,7 @@ class _MainPageState extends ConsumerState<MainPage>
 
   @override
   Widget build(BuildContext context) {
+    final userInfo = ref.read(userInfoProvider);
     provider.getMountainList();
     final pageIndex = ref.watch(mainPageIndex);
     return Scaffold(
@@ -144,6 +146,7 @@ class MainInnerPage extends ConsumerStatefulWidget{
 class _MainInnerPage extends ConsumerState<MainInnerPage>{
   @override
   Widget build(BuildContext context) {
+    final userInfo = ref.read(userInfoProvider);
     return SingleChildScrollView(
       child:Padding(
         padding: const EdgeInsets.all(10),
@@ -211,7 +214,7 @@ class _MainInnerPage extends ConsumerState<MainInnerPage>{
                           Row(
                             children: [
                               CircleAvatar(),
-                              Text("닉네임자리"),
+                              Text(userInfo!.userInfo.nickname),
                             ].map((e) => Padding(padding: EdgeInsets.only(left: 5,right: 5),child: e,)).toList(),
                           ),
 
@@ -224,7 +227,7 @@ class _MainInnerPage extends ConsumerState<MainInnerPage>{
                                   Text("완료",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
                                 ],
                               ),
-                              Text("10",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                              Text(userInfo.climbCompleteList.length.toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -232,7 +235,7 @@ class _MainInnerPage extends ConsumerState<MainInnerPage>{
                                   Text("미완료",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
                                 ],
                               ),
-                              Text("90",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                              Text((100-userInfo.climbCompleteList.length).toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                             ].map((e) => Padding(padding: EdgeInsets.only(left: 10),child: e,)).toList(),
                           )
 

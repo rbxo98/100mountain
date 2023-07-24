@@ -15,3 +15,18 @@ mlist=['가리산', '가리왕산', '가야산', '가지산', '감악산', '강�
 # 데이터 입력
 # db.collection('컬렉션이름').document('도큐먼트이름').set('dict객체') # 도큐먼트 전체가 dict객체로 바뀌니 주의
 # db.collection('컬렉션이름').document('도큐먼트이름').update('dict객체') # 특정 요소 수정
+db.collection('UserInfo').document('azleMOQn1yWYt3DVtUSHCkcmu1p1').set({
+    'climbCompleteList':[],
+    'commentList':[],
+'likeMountainList':[],
+'likePostList':[],
+'postList':[],
+    'userInfo':{
+        'address':"no",
+        'email':'llwpgus98ll@gmail.com',
+        'nickname':'rbxo9899',
+        'push_token':None,
+        'rank':'bronze',
+        'tel':'01028959916'
+    }
+})

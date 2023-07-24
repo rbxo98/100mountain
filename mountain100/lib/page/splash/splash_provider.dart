@@ -1,83 +1,44 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mountain100/data/model/user/user_model.dart';
+import 'package:mountain100/data/network/service/user_service.dart';
 
-final splashProvider =  Provider((ref)=>SplashProvider(ref:ref));
+import '../../app/app.dart';
+import '../../util/route_provier.dart';
+
+final splashProvider =  Provider<SplashProvider>((ref)=>SplashProvider(ref:ref));
+late final userCredentialProvider = StateProvider<UserCredential?>((ref) => null);
+final userInfoProvider = StateProvider<UserModel?>((ref) => null);
 
 abstract class SplashProviderInterface{
-  //init();
-  getMountainList();
+  init();
 }
 
 class SplashProvider with SplashProviderInterface{
   final ProviderRef ref;
-
+  final firestore = FirebaseFirestore.instance;
   SplashProvider({required this.ref});
 
   @override
-  getMountainList() {
-
+  init() async {
+    ref.read(userCredentialProvider.notifier).state = await ref.read(userServiceProvider).signInWithGoogle().then((value) async {
+      if (!value.additionalUserInfo!.isNewUser){
+        var result=await firestore.collection('UserInfo').doc(value.user!.uid).get();
+        print(result.data()!);
+        ref.read(userInfoProvider.notifier).state=UserModel.fromJson(result.data()!);
+        print("####");
+        navigatorKey.currentState?.pushNamedAndRemoveUntil(
+            Routes.mainRoute, (route) => false);
+      }
+      else{
+        navigatorKey.currentState?.pushNamedAndRemoveUntil(
+            Routes.loginRoute, (route) => false);
+      }
+      return value;
+    });
   }
 
-  // @override
-  // init() async{
-  //   await ConfigProvider.getConfigList();
-  //   await getBanner();
-  //   final email = await prefProvider.getEmail();
-  //   final userService = ref.read(userServiceProvider);
-  //   String currentVersion = Platform.isAndroid?ConfigProvider.currentVersionAOS:ConfigProvider.currentVersionIOS;
-  //   (await userService.login(email, Config.currentVersion)).fold((l) {
-  //     //TODO: 오류 피드백 메시지
-  //     Future.delayed(Duration(milliseconds: 2 * 1000), () {
-  //       navigatorKey.currentState?.pushNamedAndRemoveUntil(
-  //           Routes.loginRoute, (route) => false);
-  //       checkVersion(currentVersion);
-  //     });
-  //   }, (r) async {
-  //     if (r.active) {
-  //       ref
-  //           .read(userModelProvider.notifier)
-  //           .state = r;
-  //       String? token = await ref.read(pushModule).getToken();
-  //       if (token != null) {
-  //         ref.read(pushModule).updateTokenToDB(token: token);
-  //       }
-  //     }
-  //     Future.delayed(Duration(milliseconds: 2 * 1000), () {
-  //       if (r.active == false) {
-  //         showCustomOkDialog(
-  //             "회원탈퇴퇸 아이디입니다.\n확인 버튼을 누르면 로그인 페이지로 이동합니다.", okFunc: () {
-  //           navigatorKey.currentState?.pushNamedAndRemoveUntil(
-  //               Routes.loginRoute, (route) => false);
-  //         }
-  //         );
-  //       } else {
-  //         if((PushModule.pageName??"")!="MainPage") {
-  //           navigatorKey.currentState?.pushNamedAndRemoveUntil(
-  //               Routes.mainRoute, (route) => false);
-  //         }
-  //         checkVersion(currentVersion);
-  //       }
-  //     });
-  //   });
-  // }
 
-  // void checkVersion(String currentVersion){
-  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-  //     if(currentVersion!=Config.currentVersion) {
-  //       showCustomDialog("새로운 버전이 있습니다.\n업데이트하시겠습니까?", "업데이트", () async {
-  //         await StoreRedirect.redirect(
-  //             androidAppId: Config.aosPackageName, iOSAppId: Config.iosAppId);
-  //         if (Platform.isIOS) {
-  //           exit(0);
-  //         } else {
-  //           SystemNavigator.pop();
-  //         }
-  //       },
-  //           cancelTxt: "취소",
-  //           canClose: true,
-  //           middleMessage:ConfigProvider.updateMessage
-  //       );
-  //     }
-  //   });
-  // }
 
 }
