@@ -3,6 +3,7 @@ from firebase_admin import firestore
 from firebase_admin import credentials
 
 #python 3.11.4
+# pip install firebase_admin
 # secret 디렉터리 만들고 공유한 serviceAccountKey.json 파일을 넣는다.
 cred = credentials.Certificate("secret/serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
