@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mountain100/app/app.dart';
 import 'package:mountain100/app/config/app_config.dart';
+import 'package:mountain100/page/info/info_detail_page.dart';
 import 'package:mountain100/page/info/info_provider.dart';
 import 'package:mountain100/page/main/main_provider.dart';
 
@@ -116,11 +118,16 @@ class _InfoSortedByAlphabetPageState extends ConsumerState<InfoSortedByAlphabetP
     return Expanded(
       child: SingleChildScrollView(
         child: Column(
-          children: mountainList.map((e) => ListTile(
-            isThreeLine: true,
-            title: Text(e.name),
-            subtitle: Text(e.location),
-            trailing: Icon(Icons.chevron_right),
+          children: mountainList.map((e) => InkWell(
+            onTap: (){
+              navigatorKey.currentState!.push(MaterialPageRoute(builder: (_)=>InfoDetailPage(model: e,)));
+            },
+            child: ListTile(
+              isThreeLine: true,
+              title: Text(e.name),
+              subtitle: Text(e.location),
+              trailing: Icon(Icons.chevron_right),
+            ),
           )).toList(),
         ),
       ),
