@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Home from './page/home.js';
 import NavbarHead from "./page/navBar";
+import Notice from './page/notice';
 import './App.css';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
           <Route path='proc' element={<div>신청하세욧</div>} />
           <Route path='complete' element={<div>신청하세욧</div>} />
         </Route>
-        <Route path='/notice' element={<div>notice</div>}>Notice</Route>
+        <Route path='/notice/:id' element={<Notice />}>Notice</Route>
         <Route path='*' element={<div>404 NOT FOUND</div>}>ERROR</Route> {/*404 ERROR*/}
       </Routes>
     </div>

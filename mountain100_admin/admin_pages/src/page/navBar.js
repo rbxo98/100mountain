@@ -29,7 +29,7 @@ let NavbarHead = () => {
                                 </NavDropdown.Item>
                                 <NavDropdown.Item onClick={()=>{navigate('/souv/complete')}}>진행완료</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link onClick={()=>{navigate('/notice')}}>공지사항</Nav.Link>
+                            <Nav.Link onClick={()=>{navigate('/notice/1')}}>공지사항</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

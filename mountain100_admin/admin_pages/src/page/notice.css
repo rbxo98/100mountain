@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.board_title {
+  margin-bottom: 25px;
+}
+
+.board_wrap {
+  display: flex;
+  flex-flow: column wrap;
+  padding:auto;
+  padding: 2rem 300px;
+  margin: auto;
+}
+
+p {
+  word-wrap: initial;
+}
+
+#notice-table {
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    text-align: center;
+    margin: auto;
+  }
+
+.pag_custom {
+  padding-top: 30px;
+  justify-content: center;
+}
