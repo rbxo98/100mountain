@@ -1,5 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -8,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:html/parser.dart';
 import 'package:mountain100/data/model/mountain/mountain_model.dart';
 import 'package:mountain100/data/network/service/base_service.dart';
+import 'package:mountain100/page/comunity/comunity_page.dart';
 import 'package:mountain100/page/info/info_provider.dart';
 import 'package:mountain100/page/splash/splash_provider.dart';
 import '../../app/config/app_config.dart';
@@ -29,6 +35,7 @@ class _MainPageState extends ConsumerState<MainPage>
     MainInnerPage(),
     LocationPage(),
     InfoPage(),
+     ComunityPage()
   ];
 
 
@@ -36,6 +43,7 @@ class _MainPageState extends ConsumerState<MainPage>
   void initState() {
     provider = ref.read(mainProvider);
     mainTabController = ref.read(mainTabControllerProvider(this));
+    provider.getMountainList();
     super.initState();
   }
 
@@ -144,9 +152,17 @@ class MainInnerPage extends ConsumerStatefulWidget{
 }
 
 class _MainInnerPage extends ConsumerState<MainInnerPage>{
+  late MainPageProvider provider;
+  @override
+  void initState() {
+    provider = ref.read(mainProvider);
+  }
   @override
   Widget build(BuildContext context) {
     final userInfo = ref.read(userInfoProvider);
+    final mountainInfo = ref.read(mountainListProvider);
+    final recentMountainInfo = ref.watch(mainRecentClimbMountainListProvider);
+    print(recentMountainInfo);
     return SingleChildScrollView(
       child:Padding(
         padding: const EdgeInsets.all(10),
@@ -251,16 +267,39 @@ class _MainInnerPage extends ConsumerState<MainInnerPage>{
 
             Divider(height: 30.h,color: Colors.white,),
 
-            Column(
-              children: [
-                Text("최근 인증",style: TextStyle(fontSize:AppSettings.FONTSIZE_TITLE,fontWeight: FontWeight.bold))
-              ],
+            Container(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("최근 인증",style: TextStyle(fontSize:AppSettings.FONTSIZE_TITLE,fontWeight: FontWeight.bold)),
+                      Row(children: [Text("더보기"),Icon(Icons.chevron_right)],)
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            ...recentMountainInfo.map((e) {
+                              return Container();
+                            }).toList()
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ),
       ),
     );
   }
+
 
 }
 

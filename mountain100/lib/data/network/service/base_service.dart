@@ -32,10 +32,16 @@ class BaseService with BaseServiceInterface{
       );
       BaseResponse baseResponse = BaseResponse.fromJson(response.data);
       if(baseResponse.currentCount>0){
+        int i=0;
         List<MountainModel> mountainList=[];
         for(var data in baseResponse.data!){
-          MountainModel fromjson = MountainModel.fromJson(data);
-          mountainList.add(fromjson);
+          try{
+            MountainModel fromjson = MountainModel.fromJson(data);
+            mountainList.add(fromjson);
+          }
+          catch(e){
+            print(e);
+          }
         }
         return Right(mountainList);
       }

@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
-
+          titleTextStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+          centerTitle: true
         ),
         tabBarTheme: TabBarTheme(
             labelColor: AppColor.BottomNavigatorColor_Selected,
@@ -35,16 +36,3 @@ class MyApp extends StatelessWidget {
 }
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
-class MyHomePage extends ConsumerStatefulWidget{
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>_MyHomePageState();
-
-}
-
-class _MyHomePageState extends ConsumerState<MyHomePage>{
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}

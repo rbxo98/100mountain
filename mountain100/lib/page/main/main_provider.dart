@@ -1,13 +1,21 @@
+import 'dart:typed_data';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mountain100/data/model/mountain/mountain_model.dart';
 import 'package:mountain100/data/network/service/base_service.dart';
+import 'package:mountain100/page/splash/splash_provider.dart';
 
 final mainProvider = Provider((ref) => MainPageProvider(ref: ref));
 final mainPageIndex = StateProvider<int>((ref) => 0);
 final mountainListProvider = StateProvider<List<MountainModel>>((ref) => []);
 final mainTabControllerProvider = StateProvider.family<TabController,TickerProvider>((ref,vsync)=>TabController(length: 5, vsync: vsync));
+final mainRecentClimbMountainListProvider = StateProvider<List<String?>>((ref) => []);
+final mainRecentClimbMountainFirst = StateProvider<Image?>((ref)=>null);
+final mainRecentClimbMountainSecond = StateProvider<Image?>((ref)=>null);
 final BaseService baseService = BaseService();
 abstract class MainPageProviderInterface {
   setTap(int index);
@@ -27,7 +35,7 @@ class MainPageProvider with MainPageProviderInterface {
   getMountainList() async {
     try{
       final mountainList =  await baseService.getMountainList(page: 1,perPage: 100);
-      mountainList.fold((l) => Exception("Error"), (r) {
+      mountainList.fold((l){ Exception("Error"); print(l);}, (r) {
         ref.read(mountainListProvider.notifier).state=r;
       });
     }
@@ -37,9 +45,4 @@ class MainPageProvider with MainPageProviderInterface {
     }
   }
 
-
-  // @override
-  // setTap(int index) {
-  //   ref.read(mainPageIndex.notifier).state = index;
-  // }
 }
