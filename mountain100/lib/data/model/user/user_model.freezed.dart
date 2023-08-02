@@ -320,7 +320,8 @@ UserInfoModel _$UserInfoModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserInfoModel {
-  String get nickname => throw _privateConstructorUsedError;
+  String get nickname =>
+      throw _privateConstructorUsedError; //required bool notification,
   String? get address => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get rank => throw _privateConstructorUsedError;
@@ -477,6 +478,7 @@ class _$_UserInfoModel implements _UserInfoModel {
 
   @override
   final String nickname;
+//required bool notification,
   @override
   final String? address;
   @override
@@ -541,7 +543,7 @@ abstract class _UserInfoModel implements UserInfoModel {
 
   @override
   String get nickname;
-  @override
+  @override //required bool notification,
   String? get address;
   @override
   String get email;

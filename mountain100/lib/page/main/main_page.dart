@@ -68,6 +68,7 @@ class _MainPageState extends ConsumerState<MainPage>
                 title: Text("내 정보"),
                 trailing: IconButton(onPressed: () {
                   navigatorKey.currentState!.pop();
+                  mainTabController.index=4;
                   provider.setTap(4);
                 }, icon: Icon(Icons.chevron_right),),
               ),

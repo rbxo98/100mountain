@@ -23,6 +23,7 @@ class UserModel with _$UserModel{
 class UserInfoModel with _$UserInfoModel{
   const factory UserInfoModel({
     required String nickname,
+    //required bool notification,
      String? address,
     required String email,
     required String rank,

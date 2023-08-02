@@ -26,6 +26,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage>{
   }
   @override
   Widget build(BuildContext context) {
+    final notificationAgree = ref.watch(loginNotificationAgreeProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text("추가 정보 입력"),
@@ -67,6 +68,15 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage>{
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
             ),
           ),
+
+          Divider(height: 15.h,color: Colors.white,),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+            Text("알림 수신 동의"),
+            Switch(value: notificationAgree, onChanged: provider.setNotificationAgreeState),
+          ],),
 
 
           Divider(height: 15.h,color: Colors.white,),

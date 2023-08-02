@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mountain100/page/login/login_provider.dart';
+import 'package:mountain100/util/route_provier.dart';
 
 import '../../app/app.dart';
 
@@ -82,7 +83,7 @@ class _JoinPageState extends ConsumerState<JoinPage>{
                   backgroundColor: Color(0xff07635D)
               ),
               onPressed: () {
-
+                navigatorKey.currentState!.pushNamedAndRemoveUntil(Routes.userinfoInput, (route) => false);
               },
               child: Text(
                 "회원 가입",
