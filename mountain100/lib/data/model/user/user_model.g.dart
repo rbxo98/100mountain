@@ -34,16 +34,16 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'likeMountainList': instance.likeMountainList,
       'likePostList': instance.likePostList,
       'postList': instance.postList,
-      'userInfo': instance.userInfo,
+      'userInfo': instance.userInfo.toJson(),
     };
 
 _$_UserInfoModel _$$_UserInfoModelFromJson(Map<String, dynamic> json) =>
     _$_UserInfoModel(
       nickname: json['nickname'] as String,
-      address: json['address'] as String,
+      address: json['address'] as String?,
       email: json['email'] as String,
       rank: json['rank'] as String,
-      tel: json['tel'] as String,
+      tel: json['tel'] as String?,
       push_token: json['push_token'] as String?,
     );
 

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             indicator: null),
       ),
       navigatorKey: navigatorKey,
-      initialRoute: Routes.splashRoute,
+      initialRoute: Routes.loginRoute,
       onGenerateRoute: RouteGenerator.getRoute,
         builder: (ctx,widget){
           ScreenUtil.init(ctx,designSize: Size(360,640));

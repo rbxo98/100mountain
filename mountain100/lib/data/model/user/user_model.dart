@@ -23,12 +23,24 @@ class UserModel with _$UserModel{
 class UserInfoModel with _$UserInfoModel{
   const factory UserInfoModel({
     required String nickname,
-    required String address,
+     String? address,
     required String email,
     required String rank,
-    required String tel,
+     String? tel,
     String? push_token
   }) = _UserInfoModel;
   factory UserInfoModel.fromJson(Map<String, dynamic> json) =>
       _$UserInfoModelFromJson(json);
 }
+
+/*
+Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
+    <String, dynamic>{
+      'climbCompleteList': instance.climbCompleteList,
+      'commentList': instance.commentList,
+      'likeMountainList': instance.likeMountainList,
+      'likePostList': instance.likePostList,
+      'postList': instance.postList,
+      'userInfo': instance.userInfo.toJson(),
+    };
+*/

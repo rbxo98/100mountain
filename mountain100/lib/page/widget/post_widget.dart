@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:mountain100/page/splash/splash_provider.dart';
 
 import '../../data/model/post/post_model.dart';
 
@@ -13,6 +14,7 @@ class PostWidget extends ConsumerWidget{
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final userInfo = ref.read(userInfoProvider);
     return Padding(
       padding: const EdgeInsets.only(top: 15,left: 5,right: 5),
       child: Container(
@@ -28,13 +30,15 @@ class PostWidget extends ConsumerWidget{
                 children: [
                   Text(model.title,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.bold),),
 
+
                   Row(children: [
                     Text(DateFormat('yyyy-MM-dd hh-mm')
                         .format(model.date), style: TextStyle(fontSize: 12.sp,color: Colors.black54),),
-                    true?IconButton(onPressed: (){}, icon: Icon(Icons.menu),color: Colors.grey,) : Container()
+                    IconButton(onPressed: (){}, icon: Icon(Icons.menu),color: Colors.grey,splashRadius: 15.w,)
                   ],)
                 ],
               ),
+
               CarouselSlider(
                   items: [
                     Container(

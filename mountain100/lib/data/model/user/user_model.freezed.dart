@@ -321,10 +321,10 @@ UserInfoModel _$UserInfoModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserInfoModel {
   String get nickname => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get rank => throw _privateConstructorUsedError;
-  String get tel => throw _privateConstructorUsedError;
+  String? get tel => throw _privateConstructorUsedError;
   String? get push_token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -341,10 +341,10 @@ abstract class $UserInfoModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String nickname,
-      String address,
+      String? address,
       String email,
       String rank,
-      String tel,
+      String? tel,
       String? push_token});
 }
 
@@ -362,10 +362,10 @@ class _$UserInfoModelCopyWithImpl<$Res, $Val extends UserInfoModel>
   @override
   $Res call({
     Object? nickname = null,
-    Object? address = null,
+    Object? address = freezed,
     Object? email = null,
     Object? rank = null,
-    Object? tel = null,
+    Object? tel = freezed,
     Object? push_token = freezed,
   }) {
     return _then(_value.copyWith(
@@ -373,10 +373,10 @@ class _$UserInfoModelCopyWithImpl<$Res, $Val extends UserInfoModel>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -385,10 +385,10 @@ class _$UserInfoModelCopyWithImpl<$Res, $Val extends UserInfoModel>
           ? _value.rank
           : rank // ignore: cast_nullable_to_non_nullable
               as String,
-      tel: null == tel
+      tel: freezed == tel
           ? _value.tel
           : tel // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       push_token: freezed == push_token
           ? _value.push_token
           : push_token // ignore: cast_nullable_to_non_nullable
@@ -407,10 +407,10 @@ abstract class _$$_UserInfoModelCopyWith<$Res>
   @useResult
   $Res call(
       {String nickname,
-      String address,
+      String? address,
       String email,
       String rank,
-      String tel,
+      String? tel,
       String? push_token});
 }
 
@@ -426,10 +426,10 @@ class __$$_UserInfoModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? nickname = null,
-    Object? address = null,
+    Object? address = freezed,
     Object? email = null,
     Object? rank = null,
-    Object? tel = null,
+    Object? tel = freezed,
     Object? push_token = freezed,
   }) {
     return _then(_$_UserInfoModel(
@@ -437,10 +437,10 @@ class __$$_UserInfoModelCopyWithImpl<$Res>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -449,10 +449,10 @@ class __$$_UserInfoModelCopyWithImpl<$Res>
           ? _value.rank
           : rank // ignore: cast_nullable_to_non_nullable
               as String,
-      tel: null == tel
+      tel: freezed == tel
           ? _value.tel
           : tel // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       push_token: freezed == push_token
           ? _value.push_token
           : push_token // ignore: cast_nullable_to_non_nullable
@@ -466,10 +466,10 @@ class __$$_UserInfoModelCopyWithImpl<$Res>
 class _$_UserInfoModel implements _UserInfoModel {
   const _$_UserInfoModel(
       {required this.nickname,
-      required this.address,
+      this.address,
       required this.email,
       required this.rank,
-      required this.tel,
+      this.tel,
       this.push_token});
 
   factory _$_UserInfoModel.fromJson(Map<String, dynamic> json) =>
@@ -478,13 +478,13 @@ class _$_UserInfoModel implements _UserInfoModel {
   @override
   final String nickname;
   @override
-  final String address;
+  final String? address;
   @override
   final String email;
   @override
   final String rank;
   @override
-  final String tel;
+  final String? tel;
   @override
   final String? push_token;
 
@@ -530,10 +530,10 @@ class _$_UserInfoModel implements _UserInfoModel {
 abstract class _UserInfoModel implements UserInfoModel {
   const factory _UserInfoModel(
       {required final String nickname,
-      required final String address,
+      final String? address,
       required final String email,
       required final String rank,
-      required final String tel,
+      final String? tel,
       final String? push_token}) = _$_UserInfoModel;
 
   factory _UserInfoModel.fromJson(Map<String, dynamic> json) =
@@ -542,13 +542,13 @@ abstract class _UserInfoModel implements UserInfoModel {
   @override
   String get nickname;
   @override
-  String get address;
+  String? get address;
   @override
   String get email;
   @override
   String get rank;
   @override
-  String get tel;
+  String? get tel;
   @override
   String? get push_token;
   @override
