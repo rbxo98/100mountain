@@ -1,4 +1,4 @@
-# ※ 모의 앱으로, 주요 기능 중 일부는 실제로 제공되는 서비스가 아님
+# ※ 모의 앱으로, 주요 기능 중 일부는 실제 제공되는 서비스가 아님
 # mountain100
 - 국내 100대 명산에 대한 정보 제공, 스탬프 수집 앱
 ## 팀원
@@ -27,4 +27,5 @@
 - 개발언어 : Dart, JS, HTML, CSS
 - 프레임워크 : Flutter, React
 - 백엔드 : Firebase
-- 100대명산 등산로 API : 공공데이터 포털 (https://www.data.go.kr/tcs/dss/selectFileDataDetailView.do?publicDataPk=15112801)
+- 100대명산 API : 공공데이터 포털 산림청 국립자연휴양림관리소_숲나들e 숲길 100대명산 정보 (https://www.data.go.kr/tcs/dss/selectFileDataDetailView.do?publicDataPk=15112801)
+- 100대명산 사진 데이터 : -
