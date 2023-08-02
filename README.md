@@ -24,7 +24,7 @@
 - 
 
 ## 개발환경 및 리소스
-- 개발언어 : Dart, js
-- 프레임워크 : Flutter, react
+- 개발언어 : Dart, JS, HTML, CSS
+- 프레임워크 : Flutter, React
 - 백엔드 : Firebase
 - 100대명산 등산로 API : 공공데이터 포털 (https://www.data.go.kr/tcs/dss/selectFileDataDetailView.do?publicDataPk=15112801)
