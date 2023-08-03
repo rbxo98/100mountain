@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
           centerTitle: true
         ),
         tabBarTheme: TabBarTheme(
-            labelColor: AppColor.BottomNavigatorColor_Selected,
-            unselectedLabelColor: AppColor.BottomNavigatorColor_Defalut,
+            labelColor: Color(0xff07635D),
+            unselectedLabelColor:  AppColor.BottomNavigatorColor_Defalut,
+            indicatorColor:  Color(0xff07635D),
             labelStyle: TextStyle(color: AppColor.BottomNavigatorColor_Defalut), // color for text
             indicator: null),
       ),

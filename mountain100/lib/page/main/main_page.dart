@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:draggable_fab/draggable_fab.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -17,6 +18,7 @@ import 'package:mountain100/data/network/service/base_service.dart';
 import 'package:mountain100/page/comunity/comunity_page.dart';
 import 'package:mountain100/page/info/info_provider.dart';
 import 'package:mountain100/page/splash/splash_provider.dart';
+import 'package:mountain100/util/route_provier.dart';
 import '../../app/config/app_config.dart';
 import '../info/info_page.dart';
 import '../location/location_page.dart';
@@ -108,10 +110,7 @@ class _MainPageState extends ConsumerState<MainPage>
       ),
       appBar: AppBar(
         elevation: 0,
-        title: Text(
-          "100대 명산 완등인증",
-          style: TextStyle(color: Colors.black),
-        ),
+        title: Text("100대 명산 완등인증",style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.bold,color: Colors.black),),
         automaticallyImplyLeading: false,
         centerTitle: true,
         actions: [
@@ -128,7 +127,18 @@ class _MainPageState extends ConsumerState<MainPage>
           ),
         ],
       ),
-      body: mainPages[pageIndex],
+      body: Stack(children: [
+        mainPages[pageIndex],
+        DraggableFab(
+            securityBottom: 150.h,
+            child: FloatingActionButton(
+              backgroundColor: Color(0xff07635D),
+              child: Icon(Icons.nfc,size: 30.w,),
+              elevation: 5,
+                onPressed: (){
+                navigatorKey.currentState!.pushNamed(Routes.nfcRoute);
+                }))
+      ]),
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

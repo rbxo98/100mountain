@@ -60,6 +60,7 @@ dependencies:
   firebase_storage: ^11.2.5
   intl: ^0.18.1
   flutter_rating_stars: ^1.0.3+4
+  draggable_fab: ^0.1.4
 
 dev_dependencies:
   flutter_test:

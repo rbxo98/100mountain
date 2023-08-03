@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAX4BH5q7Pt98rXrylkGmppTVFZXw13FEs',
-    appId: '1:1005582649639:android:e9427295cdfed1ced54102',
+    appId: '1:1005582649639:android:e499637508debeb5d54102',
     messagingSenderId: '1005582649639',
     projectId: 'mountain-e6a92',
     storageBucket: 'mountain-e6a92.appspot.com',
@@ -67,7 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1005582649639',
     projectId: 'mountain-e6a92',
     storageBucket: 'mountain-e6a92.appspot.com',
-    androidClientId: '1005582649639-gv58qielnja9ucpsh0svvig0crqg0a7p.apps.googleusercontent.com',
+    androidClientId: '1005582649639-5f8mv9a27cafd5bolomffkfhraae1mp2.apps.googleusercontent.com',
     iosClientId: '1005582649639-omrbgguqusbav7uq2coui73aljehpmtd.apps.googleusercontent.com',
     iosBundleId: 'com.example.mountain100',
   );
@@ -78,7 +78,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1005582649639',
     projectId: 'mountain-e6a92',
     storageBucket: 'mountain-e6a92.appspot.com',
-    androidClientId: '1005582649639-gv58qielnja9ucpsh0svvig0crqg0a7p.apps.googleusercontent.com',
+    androidClientId: '1005582649639-5f8mv9a27cafd5bolomffkfhraae1mp2.apps.googleusercontent.com',
     iosClientId: '1005582649639-omrbgguqusbav7uq2coui73aljehpmtd.apps.googleusercontent.com',
     iosBundleId: 'com.example.mountain100',
   );
