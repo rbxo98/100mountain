@@ -1,11 +1,21 @@
 /*----------------home.js-----------------*/
 
-.images {
-    width: 100%;
-    max-height: 160px;
+.images_2 {
+    padding-left: clamp(0%,25%,25%);
+    width: auto;
+    max-height: 150px;
     min-height: auto;
-    height: a;
     background-image: cover;
+    padding-bottom: 10px;
+  }
+
+  .images_3 {
+    padding-left: clamp(0%,15%,15%);
+    width: auto;
+    max-height: 150px;
+    min-height: auto;
+    background-image: cover;
+    padding-bottom: 10px;
   }
   
   .checker {
@@ -15,6 +25,7 @@
   }
   
   .homepage-row {
+    align-items: center;
     height: 400px;
   }
   
@@ -22,7 +33,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    padding: 10px 150px 10px 150px;
+    padding: 10px min(10%, 150px) 10px min(10%, 150px);
     margin: auto;
   }
 
@@ -38,6 +49,8 @@
     margin: auto;
     width: 100%;
     height: 30px;
+    display: table;
+    font-size: 15px;
   }
 
   #notice-table2 {
@@ -46,6 +59,8 @@
     text-align: center;
     width: 100%;
     height: 50px;
+    display: table;
+    font-size: 15px;
   }
 
   .num {

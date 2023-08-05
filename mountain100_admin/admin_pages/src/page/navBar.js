@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import './home.css';
+import './css/home.css';
 
 let NavbarHead = () => {
     let navigate = useNavigate();
@@ -19,8 +19,8 @@ let NavbarHead = () => {
                         <Nav className="me-auto">
                             <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>
                             <NavDropdown title="인증서 신청관리" id="basic-nav-dropdown" data-bs-theme="light">
-                                <NavDropdown.Item onClick={()=>{navigate('/cert/apply')}}>발급</NavDropdown.Item>
-                                <NavDropdown.Item onClick={()=>{navigate('/cert/complete')}}>미발급</NavDropdown.Item>
+                                <NavDropdown.Item onClick={()=>{navigate('/cert/apply')}}>미발급</NavDropdown.Item>
+                                <NavDropdown.Item onClick={()=>{navigate('/cert/complete')}}>발급</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="기념품 신청관리" id="basic-nav-dropdown" data-bs-theme="light">
                                 <NavDropdown.Item onClick={()=>{navigate('/souv/apply')}}>신청</NavDropdown.Item>
