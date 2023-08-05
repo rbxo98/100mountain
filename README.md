@@ -31,7 +31,7 @@
 - 100대명산 사진 데이터 : -
 
 ### 웹UI 이미지 출처
-<a href="https://www.flaticon.com/kr/free-icons/" title="원 아이콘">원 아이콘  제작자: Dave Gandy - Flaticon</a>
+<a href="https://www.flaticon.com/kr/free-icons/-" title="원 아이콘">원 아이콘  제작자: Dave Gandy - Flaticon</a><br/>
 <a href="https://www.flaticon.com/kr/free-icons/-" title="크로스 마크 아이콘">크로스 마크 아이콘  제작자: Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/kr/free-icons/" title="완료 아이콘">완료 아이콘  제작자: Prashanth Rapolu 15 - Flaticon</a>
 <a href="https://www.flaticon.com/kr/free-icons/" title="로딩 아이콘">로딩 아이콘  제작자: Krystsina Mikhailouskaya - Flaticon</a>
