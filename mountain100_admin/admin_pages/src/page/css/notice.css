@@ -1,6 +1,6 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 
@@ -11,10 +11,9 @@
 .board_wrap {
   display: flex;
   flex-flow: column wrap;
-  padding:auto;
-  padding: 2rem 300px;
+  padding: 2rem min(10% ,300px) 0 min(10% ,300px);
   margin: auto;
-}
+  }
 
 p {
   word-wrap: initial;
@@ -30,4 +29,17 @@ p {
 .pag_custom {
   padding-top: 30px;
   justify-content: center;
+  color: black;
 }
+
+.button-div {
+  display:flex;
+  justify-content: center;
+}
+
+.check_button {
+  width: 10%;
+  
+}
+
+

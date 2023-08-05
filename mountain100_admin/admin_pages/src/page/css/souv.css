@@ -1,0 +1,151 @@
+
+/*--apply---*/ 
+
+#search-div-souvA {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 5px;
+    justify-content: right;
+    padding-right: 10px;
+    padding-top: 3%;
+}
+
+#souvApl-table {
+    border-top: solid 1px rgb(158, 158, 158);
+    border-bottom: solid 1px rgb(158, 158, 158);
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    display: table;
+  }
+
+#num-sa {
+    width: 5%;
+    background-color: rgb(240, 240, 240);
+}
+
+#name-sa {
+    width: 10%;
+    background-color: rgb(240, 240, 240);
+}
+
+#address-sa {
+    width: 35%;
+    background-color: rgb(240, 240, 240);
+}
+
+#tel-sa {
+    width: 20%;
+    background-color: rgb(240, 240, 240);
+}
+
+#waybill-sa {
+    width: 20%;
+    background-color: rgb(240, 240, 240);
+}
+
+#ap-button-sa {
+    width: 10%;
+    background-color: rgb(240, 240, 240);
+}
+
+/*Proc*/
+
+#search-div-souvP {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 5px;
+    justify-content: right;
+    padding-right: 10px;
+    padding-top: 3%;
+}
+
+#souvProc-table {
+    border-top: solid 1px rgb(158, 158, 158);
+    border-bottom: solid 1px rgb(158, 158, 158);
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    display: table;
+  }
+
+#num-sp {
+    width: 5%;
+    background-color: rgb(240, 240, 240);
+}
+
+#name-sp {
+    width: 10%;
+    background-color: rgb(240, 240, 240);
+}
+
+#address-sp {
+    width: 35%;
+    background-color: rgb(240, 240, 240);
+}
+
+#tel-sp {
+    width: 20%;
+    background-color: rgb(240, 240, 240);
+}
+
+#waybill-sp {
+    width: 20%;
+    background-color: rgb(240, 240, 240);
+}
+
+#ap-button-sp {
+    width: 10%;
+    background-color: rgb(240, 240, 240);
+}
+
+/*Comp*/
+
+#search-div-souvC {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 5px;
+    justify-content: right;
+    padding-right: 10px;
+    padding-top: 3%;
+}
+
+#souvComp-table {
+    border-top: solid 1px rgb(158, 158, 158);
+    border-bottom: solid 1px rgb(158, 158, 158);
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    display: table;
+  }
+
+#num-sc {
+    width: 5%;
+    background-color: rgb(240, 240, 240);
+}
+
+#name-sc {
+    width: 10%;
+    background-color: rgb(240, 240, 240);
+}
+
+#address-sc {
+    width: 35%;
+    background-color: rgb(240, 240, 240);
+}
+
+#tel-sc {
+    width: 20%;
+    background-color: rgb(240, 240, 240);
+}
+
+#waybill-sc {
+    width: 30%;
+    background-color: rgb(240, 240, 240);
+}

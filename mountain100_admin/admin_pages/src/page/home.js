@@ -1,28 +1,27 @@
 import NavbarHead from "./navBar";
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
-import './home.css';
-import { useState } from "react";
+import './css/home.css';
+import { useState, useEffect } from "react";
 
-function Home() {
-    let [tableValue] = useState([5,'무언가 오류가 있습니다.','김예은','2023.1.19',0]);
+function Home(props) {
+    let [tableQVal] = useState([1,2,3]);
 
     return (
       <div>
         <NavbarHead />
-        <div className="homepage">
+        <div className="homepage" >
             <Row style={{justifyContent:"space-between"}}>
                 <Col xs={5}>
                     <h3>인증서 발급 현황</h3>
-                    <Row className="homepage-row">   
+                    <Row className="homepage-row">  
                         <Col>
-                            <TitleImages pre = "미발급" value = {10}/>
+                            <TitleImages2 pre = "미발급" value = {props.aplCertData} name="x.png"/>
                             <TearBodys nowpre = "신청현황"/>
                         </Col>
                         <Col>
-                            <TitleImages pre = "발급" value = {10}/>
+                            <TitleImages2 pre = "발급" value = {props.compCertData} name="circle.png"/>
                             <TearBodys nowpre = "발급현황"/>
                         </Col>
                     </Row>
@@ -32,17 +31,17 @@ function Home() {
                     <h3>기념품 처리 현황</h3>
                     <Row className="homepage-row">
                         <Col>
-                            <TitleImages pre = "신청" value = {10}/>
+                            <TitleImages3 pre = "신청" value = {props.applyData} name="apply.png"/>
                             <TearBodys nowpre = "신청현황"/>
                         </Col>
 
                         <Col>
-                            <TitleImages pre = "진행" value = {10}/>
+                            <TitleImages3 pre = "진행" value = {props.predData} name="pred.png"/>
                             <TearBodys nowpre = "진행현황"/>
                         </Col>
 
                         <Col>
-                            <TitleImages pre = "완료" value = {10}/>
+                            <TitleImages3 pre = "완료" value = {props.compData} name="finish.png"/>
                             <TearBodys nowpre = "완료현황"/>
                         </Col>
                     </Row>
@@ -54,15 +53,15 @@ function Home() {
                     <h3>Q&A 현황</h3>
                     <Row className="homepage-row">   
                         <Col>
-                        <TitleImages pre = "미답변" value = {10}/>
+                        <TitleImages2 pre = "미답변" value = {10} name="x.png"/>
                         </Col>
                         
                         <Col>
-                            <TitleImages pre = "답변" value = {10}/>
+                            <TitleImages2 pre = "답변" value = {10} name="circle.png"/>
                         </Col>
                         <Table id = "notice-table1">
                             <thead>
-                                <tr >
+                                <tr>
                                     <th className="num">번호</th>
                                     <th className="td-title">제목</th>
                                     <th className="writer">글쓴이</th>
@@ -71,14 +70,14 @@ function Home() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {tableValue.map((a, i) => {
+                                {tableQVal.map((a, i) => {
                                     return(
-                                        <tr>
-                                            <td >{tableValue[0]}</td>
-                                            <td >{tableValue[1]}</td>
-                                            <td >{tableValue[2]}</td>
-                                            <td >{tableValue[3]}</td>
-                                            <td >{tableValue[4]}</td>
+                                        <tr style={{verticalAlign:"middle"}}>
+                                            <td >{i}</td>
+                                            <td >{i}</td>
+                                            <td >{i}</td>
+                                            <td >{i}</td>
+                                            <td >{i}</td>
                                         </tr>
                                     )
                                 })}
@@ -89,11 +88,11 @@ function Home() {
                 </Col>
                 
                 <Col xs={5}>
-                    <h3>공지사항</h3>
+                    <h3 style={{paddingTop:"10px"}}>공지사항</h3>
                     <Row className="homepage-row">
                         <Table id = "notice-table2">
                             <thead>
-                                <tr>
+                                <tr style={{verticalAlign:"middle"}}>
                                     <th className="num">번호</th>
                                     <th className="td-title">제목</th>
                                     <th className="writer">글쓴이</th>
@@ -102,17 +101,20 @@ function Home() {
                                 </tr>
                             </thead>
                             <tbody >
-                                {tableValue.map((a, i) => {
-                                    return(
-                                        <tr>
-                                            <td >{tableValue[0]}</td>
-                                            <td >{tableValue[1]}</td>
-                                            <td >{tableValue[2]}</td>
-                                            <td >{tableValue[3]}</td>
-                                            <td >{tableValue[4]}</td>
-                                        </tr>
-                                    )
-                                })}
+                                {
+                                    props.write ? props.write.map((a, i) => {
+                                        return(
+                                            <tr style={{verticalAlign:"middle"}}>
+                                                <td >{i}</td>
+                                                <td >{props.write[i].title}</td>
+                                                <td >{props.write[i].writer}</td>
+                                                <td >{props.write[i].date}</td>
+                                                <td >{props.write[i].views}</td>
+                                            </tr>
+                                        )
+                                    
+                                    }): ""
+                                }
                             </tbody>
                         </Table>
                     </Row>
@@ -127,10 +129,10 @@ function Home() {
 
   const TearBodys = (props) => {
     return (
-        <Table bordered>
+        <Table bordered style={{display:"table"}}>
             <thead>
                 <tr>
-                    <th style={{backgroundColor: "gainsboro"}}>{props.nowpre}</th>
+                    <th style={{backgroundColor: "gainsboro", verticalAlign:"middle"}}>{props.nowpre}</th>
                 </tr>
             </thead>         
             <tbody>
@@ -148,10 +150,21 @@ function Home() {
     )
   }
 
-  const TitleImages = (props) => {
+  const TitleImages3 = (props) => {
     return(
         <>
-            <img className="images" src="https://t1.kakaocdn.net/friends/prod/character/character_20221226084804_cb844dd7630a4c9b84f7971f9563b7d1.png" />
+            <img className="images_3" src={`${process.env.PUBLIC_URL}/img/${props.name}`}/>
+            <div style={{paddingBottom:"10px"}}>
+                <h3 className = "checker">{props.pre}: {props.value}</h3>
+            </div>
+        </>
+    )
+  }
+
+  const TitleImages2 = (props) => {
+    return(
+        <>
+            <img className="images_2" src={`${process.env.PUBLIC_URL}/img/${props.name}`}/>
             <div style={{paddingBottom:"10px"}}>
                 <h3 className = "checker">{props.pre}: {props.value}</h3>
             </div>
