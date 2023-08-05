@@ -47,8 +47,10 @@ class _MainPageState extends ConsumerState<MainPage>
     provider = ref.read(mainProvider);
     mainTabController = ref.read(mainTabControllerProvider(this));
     provider.getMountainList();
+    provider.getPermission();
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {

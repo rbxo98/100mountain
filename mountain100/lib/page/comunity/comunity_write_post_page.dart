@@ -4,6 +4,7 @@ import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mountain100/app/app.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 import '../main/main_provider.dart';
 import '../splash/splash_provider.dart';
@@ -32,6 +33,8 @@ class _WritePostpageState extends ConsumerState<WritePostpage> {
     final userInfo = ref.read(userInfoProvider);
     final itemValue = ref.watch(dropdownItemValueProvider);
     final selectDifficultValue = ref.watch(selectDifficultValueProvider);
+    final imageList = ref.watch(imagePickerProvider);
+    final imageListIndex = ref.watch(imagePickerIndexProvider);
     final selectDifficultColor = ref.watch(selectDifficultColorProvider);
     // final titleController = ref.watch(titleTextController);
     // final contentController = ref.watch(contentTextController);
@@ -193,6 +196,16 @@ class _WritePostpageState extends ConsumerState<WritePostpage> {
 
               Text("사진", style:
               TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),),
+              imageList.isEmpty?Container():
+                  ListView.builder(
+                    itemCount: imageList.length,
+                      itemBuilder: (context,index){
+                      final asset = imageList[index];
+                      return AssetThumb(asset: asset, width: MediaQuery.of(context).size.width.toInt(), height: 100);
+                      }
+                  ),
+              ElevatedButton(onPressed: provider.getImageFromGallery, child: Text("갤러리")),
+
 
 
 

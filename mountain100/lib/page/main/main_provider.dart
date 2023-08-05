@@ -8,6 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mountain100/data/model/mountain/mountain_model.dart';
 import 'package:mountain100/data/network/service/base_service.dart';
 import 'package:mountain100/page/splash/splash_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 final mainProvider = Provider((ref) => MainPageProvider(ref: ref));
 final mainPageIndex = StateProvider<int>((ref) => 0);
@@ -20,6 +21,7 @@ final BaseService baseService = BaseService();
 abstract class MainPageProviderInterface {
   setTap(int index);
   getMountainList();
+  Future<void> getPermission();
 }
 
 class MainPageProvider with MainPageProviderInterface {
@@ -42,6 +44,25 @@ class MainPageProvider with MainPageProviderInterface {
     catch(e){
       print(e.toString());
       Fluttertoast.showToast(msg: "산 정보를 불러오는데 실패했습니다. 앱을 종료하고 잠시 후에 다시 실행해주세요.");
+    }
+  }
+
+  @override
+  Future<void> getPermission() async {
+    if (await Permission.location.isGranted) {
+      // 권한이 부여되었습니다.
+    }
+
+    if (await Permission.location.isDenied) {
+      // 권한 부여가 거부되었습니다.
+    }
+
+    if (await Permission.location.isPermanentlyDenied) {
+      // 권한 부여가 영구적으로 거부되었습니다.
+    }
+
+    if (await Permission.location.isRestricted) {
+      // 권한이 제한되었습니다.
     }
   }
 
