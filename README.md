@@ -29,3 +29,10 @@
 - 백엔드 : Firebase
 - 100대명산 API : 공공데이터 포털 산림청 국립자연휴양림관리소_숲나들e 숲길 100대명산 정보 (https://www.data.go.kr/tcs/dss/selectFileDataDetailView.do?publicDataPk=15112801)
 - 100대명산 사진 데이터 : -
+
+### 웹UI 이미지 출처
+<a href="https://www.flaticon.com/kr/free-icons/" title="원 아이콘">원 아이콘  제작자: Dave Gandy - Flaticon</a>
+<a href="https://www.flaticon.com/kr/free-icons/-" title="크로스 마크 아이콘">크로스 마크 아이콘  제작자: Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/kr/free-icons/" title="완료 아이콘">완료 아이콘  제작자: Prashanth Rapolu 15 - Flaticon</a>
+<a href="https://www.flaticon.com/kr/free-icons/" title="로딩 아이콘">로딩 아이콘  제작자: Krystsina Mikhailouskaya - Flaticon</a>
+<a href="https://www.flaticon.com/kr/free-icons/" title="신청 아이콘">신청 아이콘  제작자: Muhammad Ali - Flaticon</a>
