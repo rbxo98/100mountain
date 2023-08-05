@@ -11,9 +11,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
           .map((e) => e as String?)
           .toList(),
       commentList: (json['commentList'] as List<dynamic>)
-          .map((e) => (e as Map<String, dynamic>?)?.map(
-                (k, e) => MapEntry(k, e as int),
-              ))
+          .map((e) => e as Map<String, dynamic>?)
           .toList(),
       likeMountainList: (json['likeMountainList'] as List<dynamic>)
           .map((e) => e as String?)
@@ -22,7 +20,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
           .map((e) => e as int?)
           .toList(),
       postList:
-          (json['postList'] as List<dynamic>).map((e) => e as int?).toList(),
+          (json['postList'] as List<dynamic>).map((e) => e as String?).toList(),
       userInfo:
           UserInfoModel.fromJson(json['userInfo'] as Map<String, dynamic>),
     );
@@ -34,7 +32,7 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'likeMountainList': instance.likeMountainList,
       'likePostList': instance.likePostList,
       'postList': instance.postList,
-      'userInfo': instance.userInfo.toJson(),
+      'userInfo': instance.userInfo,
     };
 
 _$_UserInfoModel _$$_UserInfoModelFromJson(Map<String, dynamic> json) =>

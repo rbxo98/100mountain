@@ -47,7 +47,6 @@ class _MainPageState extends ConsumerState<MainPage>
     provider = ref.read(mainProvider);
     mainTabController = ref.read(mainTabControllerProvider(this));
     provider.getMountainList();
-    provider.getPermission();
     super.initState();
   }
 
@@ -74,6 +73,13 @@ class _MainPageState extends ConsumerState<MainPage>
                   navigatorKey.currentState!.pop();
                   mainTabController.index=4;
                   provider.setTap(4);
+                }, icon: Icon(Icons.chevron_right),),
+              ),
+
+              ListTile(
+                title: Text("기념품 신청"),
+                trailing: IconButton(onPressed: () {
+                  navigatorKey.currentState!.pushNamed(Routes.applicantRoute);
                 }, icon: Icon(Icons.chevron_right),),
               ),
 

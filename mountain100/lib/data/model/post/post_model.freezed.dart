@@ -20,7 +20,7 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostModel {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   double get SSR => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $PostModelCopyWith<$Res> {
       _$PostModelCopyWithImpl<$Res, PostModel>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String title,
       double SSR,
       String content,
@@ -80,7 +80,7 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -125,7 +125,7 @@ abstract class _$$_PostModelCopyWith<$Res> implements $PostModelCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String title,
       double SSR,
       String content,
@@ -161,7 +161,7 @@ class __$$_PostModelCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -218,7 +218,7 @@ class _$_PostModel implements _PostModel {
       _$$_PostModelFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String title;
   @override
@@ -299,7 +299,7 @@ class _$_PostModel implements _PostModel {
 
 abstract class _PostModel implements PostModel {
   factory _PostModel(
-      {required final int id,
+      {required final String id,
       required final String title,
       required final double SSR,
       required final String content,
@@ -313,7 +313,7 @@ abstract class _PostModel implements PostModel {
       _$_PostModel.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get title;
   @override

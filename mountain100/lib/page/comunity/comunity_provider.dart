@@ -26,6 +26,7 @@ class ComunityProvider with ComunityProviderInterface {
     List<PostModel> posts = [];
     FirebaseFirestore.instance.collection('Posts').where("mountain",isEqualTo:name).limit(10).get().then((value) {
       for(dynamic data in value.docs){
+        print(data.data());
         posts.add(PostModel.fromJson(data.data()));
       }
       print(posts);

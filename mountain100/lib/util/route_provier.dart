@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mountain100/page/applicant/applicant_page.dart';
 import 'package:mountain100/page/comunity/comunity_page.dart';
 import 'package:mountain100/page/comunity/comunity_write_post_page.dart';
 import 'package:mountain100/page/login/join_page.dart';
@@ -16,6 +17,7 @@ class Routes{
   static const String joinRoute = "/login/join";
   static const String userinfoInput = "/userinfoInput";
   static const String mainRoute = "/main";
+  static const String applicantRoute = "/applicant";
   static const String nfcRoute = "/main/nfc";
   static const String mapRoute = "/location";
   static const String comunityRoute = "/comunity";
@@ -36,6 +38,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_)=>UserInfoPage());
       case Routes.mainRoute:
         return MaterialPageRoute(builder: (_)=>MainPage());
+      case Routes.applicantRoute:
+        return MaterialPageRoute(builder: (_)=>ApplicantPage());
       case Routes.nfcRoute:
         return MaterialPageRoute(builder: (_)=>NfcPage());
       case Routes.mapRoute:

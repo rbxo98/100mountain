@@ -9,10 +9,10 @@ part 'user_model.g.dart';
 class UserModel with _$UserModel{
   const factory UserModel({
     required List<String?> climbCompleteList,
-    required List<Map<String, int>?> commentList,
+    required List<Map<String, dynamic>?> commentList,
     required List<String?> likeMountainList,
     required List<int?> likePostList,
-    required List<int?> postList,
+    required List<String?> postList,
     required UserInfoModel userInfo,
   }) = _UserModel;
   factory UserModel.fromJson(Map<String, dynamic> json) =>

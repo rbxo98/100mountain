@@ -17,8 +17,6 @@ class WritePostpage extends ConsumerStatefulWidget {
 
 class _WritePostpageState extends ConsumerState<WritePostpage> {
   late final WritePostProvider provider;
-  final titleController = TextEditingController();
-  final contentController = TextEditingController();
 
   @override
   void initState() {
@@ -36,8 +34,8 @@ class _WritePostpageState extends ConsumerState<WritePostpage> {
     final imageList = ref.watch(imagePickerProvider);
     final imageListIndex = ref.watch(imagePickerIndexProvider);
     final selectDifficultColor = ref.watch(selectDifficultColorProvider);
-    // final titleController = ref.watch(titleTextController);
-    // final contentController = ref.watch(contentTextController);
+    final titleController = ref.watch(titleTextController);
+    final contentController = ref.watch(contentTextController);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -63,6 +61,7 @@ class _WritePostpageState extends ConsumerState<WritePostpage> {
                     focusedBorder:
                         UnderlineInputBorder(borderSide: BorderSide(width: 2))),
                 controller: titleController,
+                onChanged: (value){print(titleController.text);},
               ),
               Divider(
                 height: 10.h,
@@ -204,12 +203,12 @@ class _WritePostpageState extends ConsumerState<WritePostpage> {
                       return AssetThumb(asset: asset, width: MediaQuery.of(context).size.width.toInt(), height: 100);
                       }
                   ),
-              ElevatedButton(onPressed: provider.getImageFromGallery, child: Text("갤러리")),
+              ElevatedButton(onPressed: (){provider.getImageFromGallery(context);}, child: Text("갤러리")),
 
 
 
 
-              Align(alignment:Alignment.center,child: ElevatedButton(onPressed: (){}, child: Text("등록"))),
+              Align(alignment:Alignment.center,child: ElevatedButton(onPressed: provider.setPost, child: Text("등록"))),
             ]
                 .map((e) => Padding(
                       padding: EdgeInsets.only(left: 20, right: 20),

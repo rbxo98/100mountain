@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,9 +16,19 @@ class _NfcPageState extends ConsumerState<NfcPage>{
   @override
   void initState() {
     super.initState();
-    // NfcManager.instance.startSession(onDiscovered: (NfcTag tag)async{
-    //
-    // });
+    NfcManager.instance.startSession(onDiscovered: (NfcTag tag) async {
+      FirebaseFirestore.instance.collection("NFCTestCollection").doc('test').set({
+        "test":"success"
+      });
+      print(tag.data);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    NfcManager.instance.stopSession();
+    print(1);
   }
 
   @override
