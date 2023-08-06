@@ -62,6 +62,13 @@ const getcertComp = async (db) => {
   return queryList 
 }
 
+const getQnA = async (db) => {
+  const QuestCol = collection(db, 'Quest');
+  const Snapshot = await getDocs(QuestCol);
+  const QuestList = Snapshot.docs.map(doc => doc.data());
+  return QuestList;
+}
+
 
 export const noticeDatas = getnotice(db); //관련된 함수나 변수는 꼬옥 아래에 놓기 !!!중요!!!
 export const souvAplDatas = getSouvApl(db); // 기념품 신청
@@ -69,3 +76,4 @@ export const souvProcDatas = getSouvProc(db); // 기념품 진행
 export const souvCompDatas = getSouvComp(db); // 기념품 완료
 export const certAplDatas = getcertApl(db);
 export const certCompDatas = getcertComp(db);
+export const questDatas = getQnA(db);

@@ -11,6 +11,7 @@ import './css/home.css';
 
 function Notice(props) {
     let {id} = useParams();
+    console.log(props.write)
 
     return (
         <div id='top-notice'>
@@ -37,12 +38,13 @@ function Notice(props) {
                                 {
                                     props.write ? props.write.map((a, i) => {
                                         //비동기 처리, props를 받아온 이후 뜨게끔 변경
+                                        let wirteDate = props.write[i].date.toDate().toDateString();
                                         return(
                                             <tr>
                                                 <td >{i+1}</td>
                                                 <td >{props.write[i].title}</td>
                                                 <td >{props.write[i].writer}</td>
-                                                <td >{props.write[i].date}</td>
+                                                <td >{wirteDate}</td>
                                                 <td >{props.write[i].views}</td>
                                             </tr>
                                         )

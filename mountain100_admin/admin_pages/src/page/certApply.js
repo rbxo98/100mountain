@@ -7,8 +7,9 @@ import { useState } from "react";
 import './css/cert.css';
 import { FormCheck } from 'react-bootstrap';
 
+
 function CertApply(props) {
-    let [tableVal] = useState([5,'무언가 오류가 있습니다.','김예은','2023.1.19',0]);
+    
     return(
         <div>
             <div className='certTitle'>
@@ -40,13 +41,14 @@ function CertApply(props) {
                         <tbody>
                             {
                                 props.aplCertData ? props.aplCertData.map((a, i) => {
+                                    let certDate = props.aplCertData[i].date.toDate().toDateString();
                                     return(
                                         <tr style={{verticalAlign:"middle"}}> 
                                             <td><FormCheck /></td>
                                             <td >{props.aplCertData[i].name}</td>
                                             <td >{props.aplCertData[i].grade}</td>
-                                            <td >{props.aplCertData[i].date}</td>
-                                            <td ><Button variant="link">발급하기</Button></td>
+                                            <td >{certDate}</td>
+                                            <td ><Button variant="link" >발급하기</Button></td>
                                         </tr>
                                     )
                                 }) : ""
@@ -60,5 +62,6 @@ function CertApply(props) {
 
     )
 }
+
 
 export default CertApply;

@@ -6,8 +6,6 @@ import './css/home.css';
 import { useState, useEffect } from "react";
 
 function Home(props) {
-    let [tableQVal] = useState([1,2,3]);
-
     return (
       <div>
         <NavbarHead />
@@ -17,11 +15,11 @@ function Home(props) {
                     <h3>인증서 발급 현황</h3>
                     <Row className="homepage-row">  
                         <Col>
-                            <TitleImages2 pre = "미발급" value = {props.aplCertData} name="x.png"/>
+                            <TitleImages2 pre = "미발급" value = {props.aplCertData.length} name="x.png"/>
                             <TearBodys nowpre = "신청현황"/>
                         </Col>
                         <Col>
-                            <TitleImages2 pre = "발급" value = {props.compCertData} name="circle.png"/>
+                            <TitleImages2 pre = "발급" value = {props.compCertData.length} name="circle.png"/>
                             <TearBodys nowpre = "발급현황"/>
                         </Col>
                     </Row>
@@ -31,17 +29,17 @@ function Home(props) {
                     <h3>기념품 처리 현황</h3>
                     <Row className="homepage-row">
                         <Col>
-                            <TitleImages3 pre = "신청" value = {props.applyData} name="apply.png"/>
+                            <TitleImages3 pre = "신청" value = {props.applyData.length} name="apply.png"/>
                             <TearBodys nowpre = "신청현황"/>
                         </Col>
 
                         <Col>
-                            <TitleImages3 pre = "진행" value = {props.predData} name="pred.png"/>
+                            <TitleImages3 pre = "진행" value = {props.predData.length} name="pred.png"/>
                             <TearBodys nowpre = "진행현황"/>
                         </Col>
 
                         <Col>
-                            <TitleImages3 pre = "완료" value = {props.compData} name="finish.png"/>
+                            <TitleImages3 pre = "완료" value = {props.compData.length} name="finish.png"/>
                             <TearBodys nowpre = "완료현황"/>
                         </Col>
                     </Row>
@@ -53,11 +51,11 @@ function Home(props) {
                     <h3>Q&A 현황</h3>
                     <Row className="homepage-row">   
                         <Col>
-                        <TitleImages2 pre = "미답변" value = {10} name="x.png"/>
+                        <TitleImages2 pre = "미답변" value = {1} name="x.png"/>
                         </Col>
                         
                         <Col>
-                            <TitleImages2 pre = "답변" value = {10} name="circle.png"/>
+                            <TitleImages2 pre = "답변" value = {0} name="circle.png"/>
                         </Col>
                         <Table id = "notice-table1">
                             <thead>
@@ -70,17 +68,20 @@ function Home(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {tableQVal.map((a, i) => {
-                                    return(
-                                        <tr style={{verticalAlign:"middle"}}>
-                                            <td >{i}</td>
-                                            <td >{i}</td>
-                                            <td >{i}</td>
-                                            <td >{i}</td>
-                                            <td >{i}</td>
-                                        </tr>
-                                    )
-                                })}
+                                {
+                                    props.QnAData ? props.QnAData.map((a, i) => {
+                                        let QnADate = props.QnAData[i].date.toDate().toDateString();
+                                        return(
+                                            <tr style={{verticalAlign:"middle"}}>
+                                                <td >{i+1}</td>
+                                                <td >{props.QnAData[i].title}</td>
+                                                <td >{props.QnAData[i].writer}</td>
+                                                <td >{QnADate}</td>
+                                                <td >{props.QnAData[i].views}</td>
+                                            </tr>
+                                        )
+                                    }) : ""
+                                }
                             </tbody>
                         </Table>
                     </Row>
@@ -103,12 +104,13 @@ function Home(props) {
                             <tbody >
                                 {
                                     props.write ? props.write.map((a, i) => {
+                                        let wirteDate = props.write[i].date.toDate().toDateString();
                                         return(
                                             <tr style={{verticalAlign:"middle"}}>
                                                 <td >{i}</td>
                                                 <td >{props.write[i].title}</td>
                                                 <td >{props.write[i].writer}</td>
-                                                <td >{props.write[i].date}</td>
+                                                <td >{wirteDate}</td>
                                                 <td >{props.write[i].views}</td>
                                             </tr>
                                         )

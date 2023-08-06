@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.info {
+    padding: 20px;
+}
+
+.set-button {
+    display: flex;
+    padding-top: 10px;
+    justify-content: right;
+}

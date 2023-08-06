@@ -45,7 +45,7 @@ function SouvApply(props) {
                                         <td >{props.applyData[i].address}</td>
                                         <td >{props.applyData[i].tel}</td>
                                         <td >{props.applyData[i].waybill}</td>
-                                        <td ><Button variant="primary">배달진행</Button></td>
+                                        <td ><Button variant="primary" onClick={PopupWindow}>배달하기</Button></td>
                                     </tr>
                                 )
                             }) : " "
@@ -57,5 +57,10 @@ function SouvApply(props) {
         </div>
     )
 }
+
+const PopupWindow = () => {
+        const url = '/waybill'
+        window.open(url,"_black", "width=700, height=200, left=30, top=30, scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no");
+    }
 
 export default SouvApply;
