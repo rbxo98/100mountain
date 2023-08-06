@@ -8,7 +8,7 @@ import './css/cert.css';
 import { FormCheck } from 'react-bootstrap';
 
 function CertComp(props) {
-    let [tableVal] = useState([5,'무언가 오류가 있습니다.','김예은','2023.1.19',0]);
+    
     return(
         <div>
             <div className='certTitle'>
@@ -40,12 +40,13 @@ function CertComp(props) {
                         <tbody>
                             {
                                 props.compCertData ? props.compCertData.map((a, i) => {
+                                    let certDate = props.compCertData[i].date.toDate().toDateString();
                                     return(
                                         <tr style={{verticalAlign:"middle"}}> 
                                             <td><FormCheck /></td>
                                             <td >{props.compCertData[i].name}</td>
                                             <td >{props.compCertData[i].grade}</td>
-                                            <td >{props.compCertData[i].date}</td>
+                                            <td >{certDate}</td>
                                             <td ><Button variant="link">다운로드</Button></td>
                                         </tr>
                                     )
