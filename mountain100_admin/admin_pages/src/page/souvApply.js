@@ -60,7 +60,7 @@ function SouvApply(props) {
 
 const PopupWindow = () => {
         const url = '/waybill'
-        window.open(url,"_black", "width=700, height=900, left=30, top=30, scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no");
+        window.open(url,"_black", "width=700, height=200, left=30, top=30, scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no");
     }
 
 export default SouvApply;
