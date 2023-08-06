@@ -1,4 +1,4 @@
-package com.hsj.mountain100
+package com.jnuMO.m_100
 
 import io.flutter.embedding.android.FlutterActivity
 

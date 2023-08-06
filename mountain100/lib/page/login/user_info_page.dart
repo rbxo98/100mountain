@@ -44,7 +44,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage>{
           TextField(
             controller: _nicknameController,
             decoration: InputDecoration(
-              hintText: "* 닉네임",
+              hintText: "* 닉네임 (2글자 이상)",
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
             ),
           ),
@@ -53,6 +53,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage>{
           
           TextField(
             controller: _addressController,
+
             decoration: InputDecoration(
               hintText: "주소",
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),

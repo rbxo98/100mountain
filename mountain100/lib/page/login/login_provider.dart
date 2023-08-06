@@ -65,7 +65,7 @@ class LoginPageProvider with LoginPageProviderInterface {
       else{
         ref.read(userCredentialProvider.notifier).state = userCredential;
         navigatorKey.currentState!
-            .pushNamedAndRemoveUntil(Routes.userinfoInput, (route) => false);
+            .pushNamedAndRemoveUntil(Routes.termRoute, (route) => false);
       }
       } catch (e) {
         print(e.toString());
@@ -81,19 +81,31 @@ class LoginPageProvider with LoginPageProviderInterface {
 
   @override
   setUserInfo(String nickname, {String? address, String? tel}) async  {
+    if (nickname.length<2){
+      Fluttertoast.showToast(msg: "닉네임의 길이가 너무 짧습니다.");
+      return;
+    }
     // final token = await FirebaseMessaging.instance.getToken();
-    final user = ref.read(userCredentialProvider.notifier).state!;
-    UserInfoModel userInfoModel = UserInfoModel(nickname: nickname, address: address, email: user.user!.email!, rank: 'bronze', tel: tel);
-    UserModel userModel = UserModel(climbCompleteList: [], commentList: [], likeMountainList: [], likePostList: [], postList: [], userInfo: userInfoModel);
-    try{
-      await FirebaseFirestore.instance.collection('UserInfo').doc(user.user!.uid).set(userModel.toJson());
-      ref.read(userInfoProvider.notifier).state=userModel;
-      navigatorKey.currentState!.pushNamedAndRemoveUntil(Routes.mainRoute, (route) => false);
+    final user = ref.read(userCredentialProvider);
+    final nicknameCheck = await FirebaseFirestore.instance.collection('UserInfo').where('nickname',isEqualTo: nickname).get();
+    if (nicknameCheck.size==0)
+      {
+        UserInfoModel userInfoModel = UserInfoModel(nickname: nickname, address: address, email: user!.user!.email!, rank: 'bronze', tel: tel);
+        UserModel userModel = UserModel(climbCompleteList: [], commentList: [], likeMountainList: [], likePostList: [], postList: [], userInfo: userInfoModel);
+        try{
+          await FirebaseFirestore.instance.collection('UserInfo').doc(user!.user!.uid).set(userModel.toJson());
+          ref.read(userInfoProvider.notifier).state=userModel;
+          navigatorKey.currentState!.pushNamedAndRemoveUntil(Routes.mainRoute, (route) => false);
+        }
+        catch(e){
+          print(e.toString());
+          Fluttertoast.showToast(msg: "유저 정보 등록 실패");
+        }
+      }
+    else{
+      Fluttertoast.showToast(msg: "중복된 닉네임입니다. 새로운 닉네임을 입력해주세요.");
     }
-    catch(e){
-      print(e.toString());
-      Fluttertoast.showToast(msg: "유저 정보 등록 실패");
-    }
+
   }
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mountain100/app/app.dart';
 import 'package:mountain100/page/login/user_info_page.dart';
 import 'package:mountain100/util/route_provier.dart';
@@ -42,8 +43,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             height: 200.h,
           ),
           TextField(
+            enabled: false,
             decoration: InputDecoration(
-              hintText: "이메일",
+              hintText: "이메일 (현재 구글 로그인만 가능합니다.)",
               focusedBorder:
                   UnderlineInputBorder(borderSide: BorderSide(width: 2)),
             ),
@@ -53,9 +55,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             color: Colors.white,
           ),
           TextField(
+            enabled: false,
             obscureText: true,
             decoration: InputDecoration(
-              hintText: "비밀번호",
+              hintText: "비밀번호 (현재 구글 로그인만 가능합니다.)",
               focusedBorder:
                   UnderlineInputBorder(borderSide: BorderSide(width: 2)),
             ),
@@ -65,12 +68,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             color: Colors.white,
           ),
           ElevatedButton(
+            
               style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.only(top: 15, bottom: 15),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                   backgroundColor: Color(0xff07635D)),
-              onPressed: () {},
+              onPressed: () {
+                Fluttertoast.showToast(msg: "현재 구글 로그인만 가능합니다.");
+              },
               child: Text(
                 "로그인",
                 style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
@@ -83,7 +89,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Fluttertoast.showToast(msg: "현재 구글 로그인만 가능합니다.");
+                },
                 child: Image.asset('assets/facebook.png'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black26,
@@ -118,14 +126,17 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             TextButton(
                 onPressed: () {
-                  navigatorKey.currentState!.pushNamed(Routes.joinRoute);
+                  Fluttertoast.showToast(msg: "아직 지원되지 않는 기능입니다.");
+                  //navigatorKey.currentState!.pushNamed(Routes.joinRoute);
                 },
                 child: Text(
                   "회원가입",
                   style: TextStyle(color: Color(0xff07635D)),
                 )),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Fluttertoast.showToast(msg: "아직 지원되지 않는 기능입니다.");
+                },
                 child: Text(
                   "비밀번호 찾기",
                   style: TextStyle(color: Color(0xff07635D)),

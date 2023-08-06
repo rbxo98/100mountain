@@ -3,6 +3,7 @@ import 'package:mountain100/page/applicant/applicant_page.dart';
 import 'package:mountain100/page/comunity/comunity_page.dart';
 import 'package:mountain100/page/comunity/comunity_write_post_page.dart';
 import 'package:mountain100/page/login/join_page.dart';
+import 'package:mountain100/page/login/term_page.dart';
 import 'package:mountain100/page/nfc/nfc_page.dart';
 
 import '../page/location/location_page.dart';
@@ -12,9 +13,10 @@ import '../page/main/main_page.dart';
 import '../page/splash/splash_page.dart';
 
 class Routes{
-  static const String splashRoute = "/";
+  static const String splashRoute = "/splash";
   static const String loginRoute = "/login";
   static const String joinRoute = "/login/join";
+  static const String termRoute = "/login/term";
   static const String userinfoInput = "/userinfoInput";
   static const String mainRoute = "/main";
   static const String applicantRoute = "/applicant";
@@ -32,6 +34,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_)=>SplashPage());
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (_)=>LoginPage());
+      case Routes.termRoute:
+        return MaterialPageRoute(builder: (_)=>TermPage());
       case Routes.joinRoute:
         return MaterialPageRoute(builder: (_)=>JoinPage());
       case Routes.userinfoInput:

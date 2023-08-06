@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mountain100/app/config/app_config.dart';
 import 'package:mountain100/firebase_options.dart';
+import 'package:nfc_manager/nfc_manager.dart';
 
 import 'app/app.dart';
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mountain100/app/app.dart';
 import 'package:mountain100/page/splash/splash_provider.dart';
 
@@ -22,6 +23,12 @@ class _ApplicantPageState extends ConsumerState<ApplicantPage>{
   @override
   Widget build(BuildContext context) {
     final userInfo = ref.watch(userInfoProvider);
+    final checkSouvenirStatus = ref.watch(applicantCheckSouvenirProvider);
+    final checkCertificationStatus = ref.watch(applicantCheckCertificationProvider);
+    final nameController = ref.watch(applicantNameTextControllerProvider);
+    final addressController = ref.watch(applicantAddressTextControllerProvider);
+    final addressDetailController = ref.watch(applicantAddressDetailTextControllerProvider);
+    final telController = ref.watch(applicantTelTextControllerProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text("기념품 신청"),
@@ -33,26 +40,25 @@ class _ApplicantPageState extends ConsumerState<ApplicantPage>{
           },
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
+          Divider(height: 15,color: Colors.white,),
+
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("신청 종류"),
+                Text("신청 종류",style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.bold),),
                 Row(
                   children: [
-                    // Checkbox(value: applicantSouvenir, onChanged: (value){
-                    //   setState(() {
-                    //   applicantSouvenir=value!;
-                    // });}),
+                    Checkbox(value: checkSouvenirStatus, onChanged: provider.setSouvState),
                     Text("기념품"),
                   ],
                 ),
 
                 Row(
                   children: [
-                    // Checkbox(value: appliCertification, onChanged: (value){}),
+                    Checkbox(value: checkCertificationStatus, onChanged: provider.setCertState),
                     Text("인증서"),
                   ],
                 ),
@@ -60,48 +66,58 @@ class _ApplicantPageState extends ConsumerState<ApplicantPage>{
             ),
           ),
           
-          Container(
-            child:Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("이름"),
-                TextField(),
-              ],
+          TextField(
+            controller: nameController,
+            decoration: InputDecoration(
+              hintText: "이름",
+              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
             ),
           ),
 
-          Container(
-            child:Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("주소"),
-                TextField(),
-              ],
+          Divider(height: 15,color: Colors.white,),
+
+          TextField(
+            controller: addressController,
+            decoration: InputDecoration(
+              hintText: "주소",
+              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
             ),
           ),
 
-          Container(
-            child:Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("상세주소"),
-                TextField(),
-              ],
+          Divider(height: 15,color: Colors.white,),
+
+          TextField(
+            controller: addressDetailController,
+            decoration: InputDecoration(
+              hintText: "상세 주소",
+              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
             ),
           ),
 
-          Container(
-            child:Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("연락처"),
-                TextField(),
-              ],
+          Divider(height: 15,color: Colors.white,),
+
+          TextField(
+            controller: telController,
+            decoration: InputDecoration(
+              hintText: "연락처",
+              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
             ),
           ),
 
-          ElevatedButton(onPressed: provider.setApplicant, child: Text("신청")),
-        ],
+          Divider(height: 15,color: Colors.white,),
+ 
+          ElevatedButton(
+              onPressed: provider.setApplicant,
+              child: Text("신청",style: TextStyle(fontSize: 15.sp,color: Colors.black,fontWeight: FontWeight.bold),),
+            style: ElevatedButton.styleFrom(
+                elevation: 6,
+                backgroundColor: Color(0xFFF3F384),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                )
+            ),
+          ),
+        ].map((e) => Padding(padding: EdgeInsets.only(left: 15.w,right: 15.w),child: e,)).toList(),
       ),
     );
   }
