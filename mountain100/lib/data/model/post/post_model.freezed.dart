@@ -28,7 +28,7 @@ mixin _$PostModel {
   String get writer => throw _privateConstructorUsedError;
   List<String> get like => throw _privateConstructorUsedError;
   String get mountain => throw _privateConstructorUsedError;
-  List<Map<String, dynamic>> get comment => throw _privateConstructorUsedError;
+  List<CommentModel> get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +50,7 @@ abstract class $PostModelCopyWith<$Res> {
       String writer,
       List<String> like,
       String mountain,
-      List<Map<String, dynamic>> comment});
+      List<CommentModel> comment});
 }
 
 /// @nodoc
@@ -112,7 +112,7 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
+              as List<CommentModel>,
     ) as $Val);
   }
 }
@@ -133,7 +133,7 @@ abstract class _$$_PostModelCopyWith<$Res> implements $PostModelCopyWith<$Res> {
       String writer,
       List<String> like,
       String mountain,
-      List<Map<String, dynamic>> comment});
+      List<CommentModel> comment});
 }
 
 /// @nodoc
@@ -193,7 +193,7 @@ class __$$_PostModelCopyWithImpl<$Res>
       comment: null == comment
           ? _value._comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
+              as List<CommentModel>,
     ));
   }
 }
@@ -210,7 +210,7 @@ class _$_PostModel implements _PostModel {
       required this.writer,
       required final List<String> like,
       required this.mountain,
-      required final List<Map<String, dynamic>> comment})
+      required final List<CommentModel> comment})
       : _like = like,
         _comment = comment;
 
@@ -239,9 +239,9 @@ class _$_PostModel implements _PostModel {
 
   @override
   final String mountain;
-  final List<Map<String, dynamic>> _comment;
+  final List<CommentModel> _comment;
   @override
-  List<Map<String, dynamic>> get comment {
+  List<CommentModel> get comment {
     if (_comment is EqualUnmodifiableListView) return _comment;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_comment);
@@ -307,7 +307,7 @@ abstract class _PostModel implements PostModel {
       required final String writer,
       required final List<String> like,
       required final String mountain,
-      required final List<Map<String, dynamic>> comment}) = _$_PostModel;
+      required final List<CommentModel> comment}) = _$_PostModel;
 
   factory _PostModel.fromJson(Map<String, dynamic> json) =
       _$_PostModel.fromJson;
@@ -329,7 +329,7 @@ abstract class _PostModel implements PostModel {
   @override
   String get mountain;
   @override
-  List<Map<String, dynamic>> get comment;
+  List<CommentModel> get comment;
   @override
   @JsonKey(ignore: true)
   _$$_PostModelCopyWith<_$_PostModel> get copyWith =>

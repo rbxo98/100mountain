@@ -16,7 +16,7 @@ _$_PostModel _$$_PostModelFromJson(Map<String, dynamic> json) => _$_PostModel(
     like: (json['like'] as List<dynamic>).map((e) => e as String).toList(),
     mountain: json['mountain'] as String,
     comment: (json['comment'] as List<dynamic>)
-        .map((e) => e as Map<String, dynamic>).toList()
+        .map((e) => CommentModel.fromJson(e)).toList()
 );
 
 Map<String, dynamic> _$$_PostModelToJson(_$_PostModel instance) =>

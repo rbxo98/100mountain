@@ -21,6 +21,7 @@ final BaseService baseService = BaseService();
 abstract class MainPageProviderInterface {
   setTap(int index);
   getMountainList();
+  getRecentMountainImage();
 }
 
 class MainPageProvider with MainPageProviderInterface {
@@ -44,6 +45,16 @@ class MainPageProvider with MainPageProviderInterface {
       print(e.toString());
       Fluttertoast.showToast(msg: "산 정보를 불러오는데 실패했습니다. 앱을 종료하고 잠시 후에 다시 실행해주세요.");
     }
+  }
+
+    @override
+    getRecentMountainImage() async {
+    print(";;;");
+      print(ref.read(mainRecentClimbMountainListProvider));
+      final image1 = await FirebaseStorage.instance.ref().child('mountain/${ref.read(mainRecentClimbMountainListProvider)[0]}/image1.jpg').getData();
+      final image2 = await FirebaseStorage.instance.ref().child('mountain/${ref.read(mainRecentClimbMountainListProvider)[1]}/image1.jpg').getData();
+    ref.read(mainRecentClimbMountainFirst.notifier).state=Image.memory(image1!,fit:BoxFit.fill,width: 200.w,height: 150.h,);
+    ref.read(mainRecentClimbMountainSecond.notifier).state=Image.memory(image2!,fit:BoxFit.fill,width: 200.w,height: 150.h,);
   }
 
 }

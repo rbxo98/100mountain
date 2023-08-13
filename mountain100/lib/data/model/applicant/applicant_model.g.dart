@@ -29,7 +29,7 @@ Map<String, dynamic> _$$_ApplicantSouvenirModelToJson(
 _$_ApplicantCertificationModel _$$_ApplicantCertificationModelFromJson(
         Map<String, dynamic> json) =>
     _$_ApplicantCertificationModel(
-      date: json['date'].toDate(),
+      date: DateTime.parse(json['date'] as String),
       grade: json['grade'] as String,
       name: json['name'] as String,
       state: json['state'] as String,
@@ -38,7 +38,7 @@ _$_ApplicantCertificationModel _$$_ApplicantCertificationModelFromJson(
 Map<String, dynamic> _$$_ApplicantCertificationModelToJson(
         _$_ApplicantCertificationModel instance) =>
     <String, dynamic>{
-      'date': instance.date,
+      'date': instance.date.toIso8601String(),
       'grade': instance.grade,
       'name': instance.name,
       'state': instance.state,

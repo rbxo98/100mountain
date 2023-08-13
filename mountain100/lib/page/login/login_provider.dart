@@ -46,13 +46,9 @@ class LoginPageProvider with LoginPageProviderInterface {
         final len =
             ref.read(userInfoProvider.notifier).state!.climbCompleteList.length;
         if (len >= 2) {
-          final models = ref
-              .read(userInfoProvider.notifier)
-              .state!
-              .climbCompleteList
-              .sublist(len - 2);
           ref.read(mainRecentClimbMountainListProvider.notifier).state = [
-            ...models
+            ref.read(userInfoProvider)!.climbCompleteList[len-1],
+            ref.read(userInfoProvider)!.climbCompleteList[len-2]
           ];
         } else {
           ref.read(mainRecentClimbMountainListProvider.notifier).state = [
@@ -93,8 +89,12 @@ class LoginPageProvider with LoginPageProviderInterface {
         UserInfoModel userInfoModel = UserInfoModel(nickname: nickname, address: address, email: user!.user!.email!, rank: 'bronze', tel: tel);
         UserModel userModel = UserModel(climbCompleteList: [], commentList: [], likeMountainList: [], likePostList: [], postList: [], userInfo: userInfoModel);
         try{
+          print(1);
+          print(userModel);
           await FirebaseFirestore.instance.collection('UserInfo').doc(user!.user!.uid).set(userModel.toJson());
+          print(1);
           ref.read(userInfoProvider.notifier).state=userModel;
+          print(1);
           navigatorKey.currentState!.pushNamedAndRemoveUntil(Routes.mainRoute, (route) => false);
         }
         catch(e){

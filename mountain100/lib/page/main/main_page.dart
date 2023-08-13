@@ -50,7 +50,6 @@ class _MainPageState extends ConsumerState<MainPage>
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     final userInfo = ref.read(userInfoProvider);
@@ -69,48 +68,65 @@ class _MainPageState extends ConsumerState<MainPage>
             children: [
               ListTile(
                 title: Text("내 정보"),
-                trailing: IconButton(onPressed: () {
-                  navigatorKey.currentState!.pop();
-                  mainTabController.index=4;
-                  provider.setTap(4);
-                }, icon: Icon(Icons.chevron_right),),
+                trailing: IconButton(
+                  onPressed: () {
+                    navigatorKey.currentState!.pop();
+                    mainTabController.index = 4;
+                    provider.setTap(4);
+                  },
+                  icon: Icon(Icons.chevron_right),
+                ),
               ),
-
               ListTile(
                 title: Text("기념품 신청"),
-                trailing: IconButton(onPressed: () {
-                  navigatorKey.currentState!.pushNamed(Routes.applicantRoute);
-                }, icon: Icon(Icons.chevron_right),),
+                trailing: IconButton(
+                  onPressed: () {
+                    navigatorKey.currentState!.pushNamed(Routes.applicantRoute);
+                  },
+                  icon: Icon(Icons.chevron_right),
+                ),
               ),
-
               ListTile(
                 title: Text("공지사항"),
-                trailing: IconButton(onPressed: () {  }, icon: Icon(Icons.chevron_right),),
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.chevron_right),
+                ),
               ),
-
               ListTile(
                 title: Text("FAQ"),
-                trailing: IconButton(onPressed: () {  }, icon: Icon(Icons.chevron_right),),
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.chevron_right),
+                ),
               ),
-
               ListTile(
                 title: Text("문의하기"),
-                trailing: IconButton(onPressed: () {  }, icon: Icon(Icons.chevron_right),),
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.chevron_right),
+                ),
               ),
-
               ListTile(
                 title: Text("설정"),
-                trailing: IconButton(onPressed: () {  }, icon: Icon(Icons.chevron_right),),
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.chevron_right),
+                ),
               ),
-
               ListTile(
                 title: Text("개인정보처리방침"),
-                trailing: IconButton(onPressed: () {  }, icon: Icon(Icons.chevron_right),),
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.chevron_right),
+                ),
               ),
-
               ListTile(
                 title: Text("내 인증서"),
-                trailing: IconButton(onPressed: () {  }, icon: Icon(Icons.chevron_right),),
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.chevron_right),
+                ),
               ),
             ],
           ),
@@ -118,21 +134,25 @@ class _MainPageState extends ConsumerState<MainPage>
       ),
       appBar: AppBar(
         elevation: 0,
-        title: Text("100대 명산 완등인증",style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.bold,color: Colors.black),),
+        title: Text(
+          "100대 명산 완등인증",
+          style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
+        ),
         automaticallyImplyLeading: false,
         centerTitle: true,
         actions: [
-          Builder(
-            builder: (context) {
-              return IconButton(
-                onPressed: () {
-                  Scaffold.of(context).openEndDrawer();
-                },
-                icon: Icon(Icons.format_list_bulleted_outlined),
-                color: Colors.black,
-              );
-            }
-          ),
+          Builder(builder: (context) {
+            return IconButton(
+              onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+              icon: Icon(Icons.format_list_bulleted_outlined),
+              color: Colors.black,
+            );
+          }),
         ],
       ),
       body: Stack(children: [
@@ -140,11 +160,14 @@ class _MainPageState extends ConsumerState<MainPage>
         DraggableFab(
             securityBottom: 150.h,
             child: FloatingActionButton(
-              backgroundColor: Color(0xff07635D),
-              child: Icon(Icons.nfc,size: 30.w,),
-              elevation: 5,
-                onPressed: (){
-                navigatorKey.currentState!.pushNamed(Routes.nfcRoute);
+                backgroundColor: Color(0xff07635D),
+                child: Icon(
+                  Icons.nfc,
+                  size: 30.w,
+                ),
+                elevation: 5,
+                onPressed: () {
+                  navigatorKey.currentState!.pushNamed(Routes.nfcRoute);
                 }))
       ]),
       bottomNavigationBar: Column(
@@ -240,6 +263,9 @@ class _MainInnerPage extends ConsumerState<MainInnerPage> {
   @override
   void initState() {
     provider = ref.read(mainProvider);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      provider.getRecentMountainImage();
+    });
   }
 
   @override
@@ -247,6 +273,8 @@ class _MainInnerPage extends ConsumerState<MainInnerPage> {
     final userInfo = ref.read(userInfoProvider);
     final mountainInfo = ref.read(mountainListProvider);
     final recentMountainInfo = ref.watch(mainRecentClimbMountainListProvider);
+    final recentMountainImage1 = ref.watch(mainRecentClimbMountainFirst);
+    final recentMountainImage2 = ref.watch(mainRecentClimbMountainSecond);
     print(recentMountainInfo);
     return SingleChildScrollView(
       child: Padding(
@@ -424,20 +452,25 @@ class _MainInnerPage extends ConsumerState<MainInnerPage> {
                       )
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        child: Row(
+
+                  Container(
+                    height: 200.h,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 2,
+                        itemBuilder: (context,index){
+                      return Container(
+                        width: 150.w,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ...recentMountainInfo.map((e) {
-                              return Container();
-                            }).toList()
+                            Text(recentMountainInfo[index]!),
+                            index==1 ? recentMountainImage1 ?? Container() :  recentMountainImage2 ?? Container()
                           ],
                         ),
-                      )
-                    ],
-                  )
+                      );
+                    }),
+                  ),
                 ],
               ),
             )

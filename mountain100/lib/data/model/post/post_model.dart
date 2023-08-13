@@ -12,7 +12,7 @@ class PostModel with _$PostModel{
     required String writer,
     required List<String> like,
     required String mountain,
-    required List<Map<String,dynamic>> comment,
+    required List<CommentModel> comment,
   }) = _PostModel;
   factory PostModel.fromJson(Map<String, dynamic> json) =>
       _$PostModelFromJson(json);
@@ -44,9 +44,8 @@ _$_PostModel _$$_PostModelFromJson(Map<String, dynamic> json) => _$_PostModel(
     like: (json['like'] as List<dynamic>).map((e) => e as String).toList(),
     mountain: json['mountain'] as String,
     comment: (json['comment'] as List<dynamic>)
-        .map((e) => e as Map<String, dynamic>).toList()
+        .map((e) => CommentModel.fromJson(e)).toList()
 );
-
 Map<String, dynamic> _$$_PostModelToJson(_$_PostModel instance) =>
     <String, dynamic>{
       'id': instance.id,
