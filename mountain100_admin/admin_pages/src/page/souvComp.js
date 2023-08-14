@@ -49,7 +49,7 @@ function SouvComp(props) {
                                             <td ><Button variant="primary">운송현황</Button></td>
                                         </tr>
                                     )
-                                }): ""
+                                }): null
                            }
                         </tbody>
                     </Table>

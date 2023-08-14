@@ -51,7 +51,7 @@ function CertApply(props) {
                                             <td ><Button variant="link" >발급하기</Button></td>
                                         </tr>
                                     )
-                                }) : ""
+                                }) : null
                             }
                         </tbody>
                     </Table>

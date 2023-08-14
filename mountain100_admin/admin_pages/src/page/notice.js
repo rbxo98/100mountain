@@ -48,7 +48,7 @@ function Notice(props) {
                                                 <td >{props.write[i].views}</td>
                                             </tr>
                                         )
-                                }) : ""
+                                }) : null
                                     }
                             </tbody>
                         </Table>

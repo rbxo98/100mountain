@@ -7,7 +7,7 @@ import NavbarHead from "./page/navBar";
 import Notice from './page/notice';
 import CertApply from './page/certApply';
 import CertComp from './page/certComp';
-import WaybillInfo from './page/waybilInfo';
+import {WaybillInfo} from './page/waybilInfo';
 import SouvApply from './page/souvApply';
 import SouvProc from './page/souvProc';
 import SouvComp from './page/souvComp';
@@ -59,7 +59,7 @@ function App() {
 
   useEffect(() => {
       fetchWriteDT();
-  },[write]); //빈 배열로 마운트 될 때마다만 실행
+  },[write]); //빈 배열일땐 마운트 될 때마다만 실행
 
   useEffect(() => {
     fetchSouvApDT();
@@ -84,6 +84,7 @@ function App() {
   useEffect(() => {
     fetchQnA();
   },[QnAData]);
+
 
   return (
     
