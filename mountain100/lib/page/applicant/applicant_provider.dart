@@ -23,7 +23,9 @@ StateProvider<TextEditingController>((ref) => TextEditingController());
 final applicantAddressDetailTextControllerProvider =
 StateProvider<TextEditingController>((ref) => TextEditingController());
 final applicantTelTextControllerProvider =
-StateProvider<TextEditingController>((ref) => TextEditingController());
+StateProvider<TextEditingController>((ref) => TextEditingController(
+  text:ref.read(userInfoProvider)!.userInfo.tel,
+));
 
 class ApplicantPageProvider with ApplicantPageProviderInterface {
   final ProviderRef ref;
@@ -40,8 +42,9 @@ class ApplicantPageProvider with ApplicantPageProviderInterface {
             name: ref.read(applicantNameTextControllerProvider).text,
             address:
             "${ref.read(applicantAddressTextControllerProvider).text} ${ref.read(applicantAddressDetailTextControllerProvider).text}",
-            info: "신청",
+            info: "신청함",
             tel: ref.read(applicantTelTextControllerProvider).text,
+            nickname: ref.read(userInfoProvider)!.userInfo.nickname,
             waybill: "");
         await FirebaseFirestore.instance
             .collection('Souv')
@@ -53,6 +56,7 @@ class ApplicantPageProvider with ApplicantPageProviderInterface {
     if (ref.read(applicantCheckCertificationProvider)) {
       if (applicantCertificationCheck.data()==null){
         ApplicantCertificationModel model = ApplicantCertificationModel(
+            nickname: ref.read(userInfoProvider)!.userInfo.nickname,
             name: ref.read(applicantNameTextControllerProvider).text,
             date: DateTime.now(),
             grade: ref.read(userInfoProvider)!.userInfo.rank,

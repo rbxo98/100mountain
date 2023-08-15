@@ -263,9 +263,6 @@ class _MainInnerPage extends ConsumerState<MainInnerPage> {
   @override
   void initState() {
     provider = ref.read(mainProvider);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      provider.getRecentMountainImage();
-    });
   }
 
   @override
@@ -273,8 +270,7 @@ class _MainInnerPage extends ConsumerState<MainInnerPage> {
     final userInfo = ref.read(userInfoProvider);
     final mountainInfo = ref.read(mountainListProvider);
     final recentMountainInfo = ref.watch(mainRecentClimbMountainListProvider);
-    final recentMountainImage1 = ref.watch(mainRecentClimbMountainFirst);
-    final recentMountainImage2 = ref.watch(mainRecentClimbMountainSecond);
+    final mountainInfoLoad = ref.watch(isLoadingProvider);
     print(recentMountainInfo);
     return SingleChildScrollView(
       child: Padding(
@@ -282,6 +278,20 @@ class _MainInnerPage extends ConsumerState<MainInnerPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            mountainInfoLoad?Container():
+            Container(
+              color: Colors.red,
+              child: Row(
+                children: [
+                  Text("산 정보를 불러오는 중입니다. 일부 기능이 동작하지 않을 수 있습니다. ",style: TextStyle(fontSize: 10.sp),),
+                  SizedBox(
+                      width:12,
+                      height: 12,
+                      child: CircularProgressIndicator(strokeWidth: 2,)),
+                ],
+              ),
+            ),
+            Divider(height: 15,color: Colors.white,),
             Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
@@ -323,114 +333,118 @@ class _MainInnerPage extends ConsumerState<MainInnerPage> {
               height: 30.h,
               color: Colors.white,
             ),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "내 인증 현황",
-                        style: TextStyle(
-                            fontSize: AppSettings.FONTSIZE_TITLE,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        "자세히",
-                        style: TextStyle(color: Colors.black54),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: 70.h,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(50),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.7),
-                            blurRadius: 5.0,
-                            offset: Offset(3, 10), // changes position of shadow
-                          ),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              CircleAvatar(),
-                              Text(userInfo!.userInfo.nickname),
-                            ]
-                                .map((e) => Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 5, right: 5),
-                                      child: e,
-                                    ))
-                                .toList(),
-                          ),
-                          Row(
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.check_circle_outline,
-                                    color: Colors.green,
-                                  ),
-                                  Text(
-                                    "완료",
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                userInfo.climbCompleteList.length.toString(),
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.highlight_off_outlined,
-                                    color: Colors.red,
-                                  ),
-                                  Text(
-                                    "미완료",
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                (100 - userInfo.climbCompleteList.length)
-                                    .toString(),
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ]
-                                .map((e) => Padding(
-                                      padding: EdgeInsets.only(left: 10),
-                                      child: e,
-                                    ))
-                                .toList(),
-                          )
-                        ]
-                            .map((e) => Padding(
-                                  padding: EdgeInsets.only(left: 10, right: 5),
-                                  child: e,
-                                ))
-                            .toList(),
-                      ),
+            InkWell(
+              onTap: (){
+                navigatorKey.currentState!.pushNamed(Routes.myMountainDetailRoute);
+              },
+              child: Container(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "내 인증 현황",
+                          style: TextStyle(
+                              fontSize: AppSettings.FONTSIZE_TITLE,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "자세히",
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                      ],
                     ),
-                  )
-                ],
+                    Container(
+                      height: 70.h,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.7),
+                              blurRadius: 5.0,
+                              offset: Offset(3, 10), // changes position of shadow
+                            ),
+                          ]),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              children: [
+                                Text(userInfo!.userInfo.nickname,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.sp,),),
+                              ]
+                                  .map((e) => Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 5, right: 5),
+                                        child: e,
+                                      ))
+                                  .toList(),
+                            ),
+                            Row(
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.check_circle_outline,
+                                      color: Colors.green,
+                                    ),
+                                    Text(
+                                      "완료",
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  userInfo.climbCompleteList.length.toString(),
+                                  style: TextStyle(
+                                      fontSize: 20, fontWeight: FontWeight.bold),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.highlight_off_outlined,
+                                      color: Colors.red,
+                                    ),
+                                    Text(
+                                      "미완료",
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  (100 - userInfo.climbCompleteList.length)
+                                      .toString(),
+                                  style: TextStyle(
+                                      fontSize: 20, fontWeight: FontWeight.bold),
+                                ),
+                              ]
+                                  .map((e) => Padding(
+                                        padding: EdgeInsets.only(left: 10),
+                                        child: e,
+                                      ))
+                                  .toList(),
+                            )
+                          ]
+                              .map((e) => Padding(
+                                    padding: EdgeInsets.only(left: 10, right: 5),
+                                    child: e,
+                                  ))
+                              .toList(),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Divider(
@@ -464,8 +478,6 @@ class _MainInnerPage extends ConsumerState<MainInnerPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(recentMountainInfo[index]!),
-                            index==1 ? recentMountainImage1 ?? Container() :  recentMountainImage2 ?? Container()
                           ],
                         ),
                       );

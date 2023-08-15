@@ -8,6 +8,7 @@ import 'package:mountain100/app/app.dart';
 import 'package:mountain100/page/splash/splash_provider.dart';
 
 import '../../data/model/post/post_model.dart';
+import 'comunity_post_detail_provider.dart';
 
 class ComunityPostDetailPage extends ConsumerStatefulWidget {
   late final PostModel model;
@@ -21,12 +22,19 @@ class ComunityPostDetailPage extends ConsumerStatefulWidget {
 
 class _ComunityPostDetailPage extends ConsumerState<ComunityPostDetailPage> {
   late final PostModel model;
+  late final ComunityPostDetailProvider provider;
 
   _ComunityPostDetailPage({required this.model});
+  @override
+  void initState() {
+    provider = ref.read(comunityProvider);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final userInfo = ref.read(userInfoProvider);
+    final thumbColor = ref.watch(thumbColorProvider);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -35,7 +43,7 @@ class _ComunityPostDetailPage extends ConsumerState<ComunityPostDetailPage> {
           onPressed: () {
             navigatorKey.currentState!.pop();
           },
-          icon: Icon(Icons.chevron_left),
+          icon: Icon(Icons.chevron_left,color: Colors.black,),
         ),
       ),
       body: Container(
@@ -138,9 +146,16 @@ class _ComunityPostDetailPage extends ConsumerState<ComunityPostDetailPage> {
                 children: [
                   Row(
                     children: [
-                      model.like.contains(userInfo!.userInfo.nickname)
-                          ? Icon(Icons.thumb_up)
-                          : Icon(Icons.thumb_up_outlined),
+                      InkWell(
+                        onTap: (){
+                          provider.setThumbUp(model);
+                        },
+                        child:
+                            Icon(
+                                Icons.thumb_up,
+                              color: thumbColor,
+                            ),
+                      ),
                       Text(model.like.length.toString()),
                     ],
                   ),

@@ -11,7 +11,7 @@ class UserModel with _$UserModel{
     required List<String?> climbCompleteList,
     required List<Map<String, dynamic>?> commentList,
     required List<String?> likeMountainList,
-    required List<int?> likePostList,
+    required List<String?> likePostList,
     required List<String?> postList,
     required UserInfoModel userInfo,
   }) = _UserModel;

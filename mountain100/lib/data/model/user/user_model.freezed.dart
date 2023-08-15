@@ -24,7 +24,7 @@ mixin _$UserModel {
   List<Map<String, dynamic>?> get commentList =>
       throw _privateConstructorUsedError;
   List<String?> get likeMountainList => throw _privateConstructorUsedError;
-  List<int?> get likePostList => throw _privateConstructorUsedError;
+  List<String?> get likePostList => throw _privateConstructorUsedError;
   List<String?> get postList => throw _privateConstructorUsedError;
   UserInfoModel get userInfo => throw _privateConstructorUsedError;
 
@@ -43,7 +43,7 @@ abstract class $UserModelCopyWith<$Res> {
       {List<String?> climbCompleteList,
       List<Map<String, dynamic>?> commentList,
       List<String?> likeMountainList,
-      List<int?> likePostList,
+      List<String?> likePostList,
       List<String?> postList,
       UserInfoModel userInfo});
 
@@ -86,7 +86,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       likePostList: null == likePostList
           ? _value.likePostList
           : likePostList // ignore: cast_nullable_to_non_nullable
-              as List<int?>,
+              as List<String?>,
       postList: null == postList
           ? _value.postList
           : postList // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       {List<String?> climbCompleteList,
       List<Map<String, dynamic>?> commentList,
       List<String?> likeMountainList,
-      List<int?> likePostList,
+      List<String?> likePostList,
       List<String?> postList,
       UserInfoModel userInfo});
 
@@ -160,7 +160,7 @@ class __$$_UserModelCopyWithImpl<$Res>
       likePostList: null == likePostList
           ? _value._likePostList
           : likePostList // ignore: cast_nullable_to_non_nullable
-              as List<int?>,
+              as List<String?>,
       postList: null == postList
           ? _value._postList
           : postList // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ class _$_UserModel implements _UserModel {
       {required final List<String?> climbCompleteList,
       required final List<Map<String, dynamic>?> commentList,
       required final List<String?> likeMountainList,
-      required final List<int?> likePostList,
+      required final List<String?> likePostList,
       required final List<String?> postList,
       required this.userInfo})
       : _climbCompleteList = climbCompleteList,
@@ -218,9 +218,9 @@ class _$_UserModel implements _UserModel {
     return EqualUnmodifiableListView(_likeMountainList);
   }
 
-  final List<int?> _likePostList;
+  final List<String?> _likePostList;
   @override
-  List<int?> get likePostList {
+  List<String?> get likePostList {
     if (_likePostList is EqualUnmodifiableListView) return _likePostList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_likePostList);
@@ -290,7 +290,7 @@ abstract class _UserModel implements UserModel {
       {required final List<String?> climbCompleteList,
       required final List<Map<String, dynamic>?> commentList,
       required final List<String?> likeMountainList,
-      required final List<int?> likePostList,
+      required final List<String?> likePostList,
       required final List<String?> postList,
       required final UserInfoModel userInfo}) = _$_UserModel;
 
@@ -304,7 +304,7 @@ abstract class _UserModel implements UserModel {
   @override
   List<String?> get likeMountainList;
   @override
-  List<int?> get likePostList;
+  List<String?> get likePostList;
   @override
   List<String?> get postList;
   @override

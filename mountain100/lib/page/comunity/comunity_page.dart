@@ -45,7 +45,7 @@ class _ComunityPageState extends ConsumerState<ComunityPage> {
                 children: [
                   DropdownButton(
                       value: itemValue,
-                      items: mountainList
+                      items: mountainList.keys
                           .map((e) => DropdownMenuItem(
                                 child: Text(e.name),
                                 value: e.name,

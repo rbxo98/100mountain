@@ -43,18 +43,6 @@ class LoginPageProvider with LoginPageProviderInterface {
       if(result.data()!=null){
         ref.read(userInfoProvider.notifier).state =
             UserModel.fromJson(result.data()!);
-        final len =
-            ref.read(userInfoProvider.notifier).state!.climbCompleteList.length;
-        if (len >= 2) {
-          ref.read(mainRecentClimbMountainListProvider.notifier).state = [
-            ref.read(userInfoProvider)!.climbCompleteList[len-1],
-            ref.read(userInfoProvider)!.climbCompleteList[len-2]
-          ];
-        } else {
-          ref.read(mainRecentClimbMountainListProvider.notifier).state = [
-            ...ref.read(userInfoProvider.notifier).state!.climbCompleteList
-          ];
-        }
         navigatorKey.currentState
             ?.pushNamedAndRemoveUntil(Routes.mainRoute, (route) => false);
       }

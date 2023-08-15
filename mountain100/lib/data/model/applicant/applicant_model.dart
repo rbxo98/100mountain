@@ -12,6 +12,7 @@ class ApplicantSouvenirModel with _$ApplicantSouvenirModel{
     required String info,
     required String tel,
     required String waybill,
+    required String nickname,
   }) = _ApplicantSouvenirModel;
   factory ApplicantSouvenirModel.fromJson(Map<String, dynamic> json) =>
       _$ApplicantSouvenirModelFromJson(json);
@@ -24,6 +25,7 @@ class ApplicantCertificationModel with _$ApplicantCertificationModel{
     required String grade,
     required String name,
     required String state,
+    required String nickname,
   }) = _ApplicantCertificationModel;
   factory ApplicantCertificationModel.fromJson(Map<String, dynamic> json) =>
       _$ApplicantCertificationModelFromJson(json);
@@ -37,6 +39,7 @@ _$_ApplicantCertificationModel _$$_ApplicantCertificationModelFromJson(
       grade: json['grade'] as String,
       name: json['name'] as String,
       state: json['state'] as String,
+      nickname: json['nickname'] as String,
     );
 
 Map<String, dynamic> _$$_ApplicantCertificationModelToJson(
@@ -46,6 +49,7 @@ Map<String, dynamic> _$$_ApplicantCertificationModelToJson(
       'grade': instance.grade,
       'name': instance.name,
       'state': instance.state,
+      'nickname': instance.nickname,
     };
 
 * */

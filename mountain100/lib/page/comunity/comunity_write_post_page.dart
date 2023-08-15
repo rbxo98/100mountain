@@ -97,7 +97,7 @@ class _WritePostpageState extends ConsumerState<WritePostpage> {
                             menuMaxHeight: 150.h,
                             isExpanded: true,
                             value: itemValue,
-                            items: mountainList
+                            items: mountainList.keys
                                 .map((e) => DropdownMenuItem(
                                       child: Text(e.name),
                                       value: e.name,

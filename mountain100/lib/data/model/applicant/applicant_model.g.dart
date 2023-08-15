@@ -14,6 +14,7 @@ _$_ApplicantSouvenirModel _$$_ApplicantSouvenirModelFromJson(
       info: json['info'] as String,
       tel: json['tel'] as String,
       waybill: json['waybill'] as String,
+      nickname: json['nickname'] as String,
     );
 
 Map<String, dynamic> _$$_ApplicantSouvenirModelToJson(
@@ -24,22 +25,25 @@ Map<String, dynamic> _$$_ApplicantSouvenirModelToJson(
       'info': instance.info,
       'tel': instance.tel,
       'waybill': instance.waybill,
+      'nickname': instance.nickname,
     };
 
 _$_ApplicantCertificationModel _$$_ApplicantCertificationModelFromJson(
-        Map<String, dynamic> json) =>
+    Map<String, dynamic> json) =>
     _$_ApplicantCertificationModel(
-      date: DateTime.parse(json['date'] as String),
-      grade: json['grade'] as String,
-      name: json['name'] as String,
-      state: json['state'] as String,
+          date: json['date'].toDate(),
+          grade: json['grade'] as String,
+          name: json['name'] as String,
+          state: json['state'] as String,
+          nickname: json['nickname'] as String,
     );
 
 Map<String, dynamic> _$$_ApplicantCertificationModelToJson(
-        _$_ApplicantCertificationModel instance) =>
+    _$_ApplicantCertificationModel instance) =>
     <String, dynamic>{
-      'date': instance.date.toIso8601String(),
-      'grade': instance.grade,
-      'name': instance.name,
-      'state': instance.state,
+          'date': instance.date,
+          'grade': instance.grade,
+          'name': instance.name,
+          'state': instance.state,
+          'nickname': instance.nickname,
     };

@@ -26,6 +26,7 @@ mixin _$ApplicantSouvenirModel {
   String get info => throw _privateConstructorUsedError;
   String get tel => throw _privateConstructorUsedError;
   String get waybill => throw _privateConstructorUsedError;
+  String get nickname => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +41,12 @@ abstract class $ApplicantSouvenirModelCopyWith<$Res> {
       _$ApplicantSouvenirModelCopyWithImpl<$Res, ApplicantSouvenirModel>;
   @useResult
   $Res call(
-      {String name, String address, String info, String tel, String waybill});
+      {String name,
+      String address,
+      String info,
+      String tel,
+      String waybill,
+      String nickname});
 }
 
 /// @nodoc
@@ -62,6 +68,7 @@ class _$ApplicantSouvenirModelCopyWithImpl<$Res,
     Object? info = null,
     Object? tel = null,
     Object? waybill = null,
+    Object? nickname = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -84,6 +91,10 @@ class _$ApplicantSouvenirModelCopyWithImpl<$Res,
           ? _value.waybill
           : waybill // ignore: cast_nullable_to_non_nullable
               as String,
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -97,7 +108,12 @@ abstract class _$$_ApplicantSouvenirModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name, String address, String info, String tel, String waybill});
+      {String name,
+      String address,
+      String info,
+      String tel,
+      String waybill,
+      String nickname});
 }
 
 /// @nodoc
@@ -117,6 +133,7 @@ class __$$_ApplicantSouvenirModelCopyWithImpl<$Res>
     Object? info = null,
     Object? tel = null,
     Object? waybill = null,
+    Object? nickname = null,
   }) {
     return _then(_$_ApplicantSouvenirModel(
       name: null == name
@@ -139,6 +156,10 @@ class __$$_ApplicantSouvenirModelCopyWithImpl<$Res>
           ? _value.waybill
           : waybill // ignore: cast_nullable_to_non_nullable
               as String,
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -151,7 +172,8 @@ class _$_ApplicantSouvenirModel implements _ApplicantSouvenirModel {
       required this.address,
       required this.info,
       required this.tel,
-      required this.waybill});
+      required this.waybill,
+      required this.nickname});
 
   factory _$_ApplicantSouvenirModel.fromJson(Map<String, dynamic> json) =>
       _$$_ApplicantSouvenirModelFromJson(json);
@@ -166,10 +188,12 @@ class _$_ApplicantSouvenirModel implements _ApplicantSouvenirModel {
   final String tel;
   @override
   final String waybill;
+  @override
+  final String nickname;
 
   @override
   String toString() {
-    return 'ApplicantSouvenirModel(name: $name, address: $address, info: $info, tel: $tel, waybill: $waybill)';
+    return 'ApplicantSouvenirModel(name: $name, address: $address, info: $info, tel: $tel, waybill: $waybill, nickname: $nickname)';
   }
 
   @override
@@ -181,13 +205,15 @@ class _$_ApplicantSouvenirModel implements _ApplicantSouvenirModel {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.info, info) || other.info == info) &&
             (identical(other.tel, tel) || other.tel == tel) &&
-            (identical(other.waybill, waybill) || other.waybill == waybill));
+            (identical(other.waybill, waybill) || other.waybill == waybill) &&
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, address, info, tel, waybill);
+      Object.hash(runtimeType, name, address, info, tel, waybill, nickname);
 
   @JsonKey(ignore: true)
   @override
@@ -210,7 +236,8 @@ abstract class _ApplicantSouvenirModel implements ApplicantSouvenirModel {
       required final String address,
       required final String info,
       required final String tel,
-      required final String waybill}) = _$_ApplicantSouvenirModel;
+      required final String waybill,
+      required final String nickname}) = _$_ApplicantSouvenirModel;
 
   factory _ApplicantSouvenirModel.fromJson(Map<String, dynamic> json) =
       _$_ApplicantSouvenirModel.fromJson;
@@ -225,6 +252,8 @@ abstract class _ApplicantSouvenirModel implements ApplicantSouvenirModel {
   String get tel;
   @override
   String get waybill;
+  @override
+  String get nickname;
   @override
   @JsonKey(ignore: true)
   _$$_ApplicantSouvenirModelCopyWith<_$_ApplicantSouvenirModel> get copyWith =>
@@ -242,6 +271,7 @@ mixin _$ApplicantCertificationModel {
   String get grade => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
+  String get nickname => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -257,7 +287,12 @@ abstract class $ApplicantCertificationModelCopyWith<$Res> {
       _$ApplicantCertificationModelCopyWithImpl<$Res,
           ApplicantCertificationModel>;
   @useResult
-  $Res call({DateTime date, String grade, String name, String state});
+  $Res call(
+      {DateTime date,
+      String grade,
+      String name,
+      String state,
+      String nickname});
 }
 
 /// @nodoc
@@ -278,6 +313,7 @@ class _$ApplicantCertificationModelCopyWithImpl<$Res,
     Object? grade = null,
     Object? name = null,
     Object? state = null,
+    Object? nickname = null,
   }) {
     return _then(_value.copyWith(
       date: null == date
@@ -296,6 +332,10 @@ class _$ApplicantCertificationModelCopyWithImpl<$Res,
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -309,7 +349,12 @@ abstract class _$$_ApplicantCertificationModelCopyWith<$Res>
       __$$_ApplicantCertificationModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime date, String grade, String name, String state});
+  $Res call(
+      {DateTime date,
+      String grade,
+      String name,
+      String state,
+      String nickname});
 }
 
 /// @nodoc
@@ -329,6 +374,7 @@ class __$$_ApplicantCertificationModelCopyWithImpl<$Res>
     Object? grade = null,
     Object? name = null,
     Object? state = null,
+    Object? nickname = null,
   }) {
     return _then(_$_ApplicantCertificationModel(
       date: null == date
@@ -347,6 +393,10 @@ class __$$_ApplicantCertificationModelCopyWithImpl<$Res>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -358,7 +408,8 @@ class _$_ApplicantCertificationModel implements _ApplicantCertificationModel {
       {required this.date,
       required this.grade,
       required this.name,
-      required this.state});
+      required this.state,
+      required this.nickname});
 
   factory _$_ApplicantCertificationModel.fromJson(Map<String, dynamic> json) =>
       _$$_ApplicantCertificationModelFromJson(json);
@@ -371,10 +422,12 @@ class _$_ApplicantCertificationModel implements _ApplicantCertificationModel {
   final String name;
   @override
   final String state;
+  @override
+  final String nickname;
 
   @override
   String toString() {
-    return 'ApplicantCertificationModel(date: $date, grade: $grade, name: $name, state: $state)';
+    return 'ApplicantCertificationModel(date: $date, grade: $grade, name: $name, state: $state, nickname: $nickname)';
   }
 
   @override
@@ -385,12 +438,15 @@ class _$_ApplicantCertificationModel implements _ApplicantCertificationModel {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.grade, grade) || other.grade == grade) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.state, state) || other.state == state));
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, grade, name, state);
+  int get hashCode =>
+      Object.hash(runtimeType, date, grade, name, state, nickname);
 
   @JsonKey(ignore: true)
   @override
@@ -413,7 +469,8 @@ abstract class _ApplicantCertificationModel
       {required final DateTime date,
       required final String grade,
       required final String name,
-      required final String state}) = _$_ApplicantCertificationModel;
+      required final String state,
+      required final String nickname}) = _$_ApplicantCertificationModel;
 
   factory _ApplicantCertificationModel.fromJson(Map<String, dynamic> json) =
       _$_ApplicantCertificationModel.fromJson;
@@ -426,6 +483,8 @@ abstract class _ApplicantCertificationModel
   String get name;
   @override
   String get state;
+  @override
+  String get nickname;
   @override
   @JsonKey(ignore: true)
   _$$_ApplicantCertificationModelCopyWith<_$_ApplicantCertificationModel>

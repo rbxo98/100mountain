@@ -4,6 +4,7 @@ import 'package:mountain100/page/comunity/comunity_page.dart';
 import 'package:mountain100/page/comunity/comunity_write_post_page.dart';
 import 'package:mountain100/page/login/join_page.dart';
 import 'package:mountain100/page/login/term_page.dart';
+import 'package:mountain100/page/my/my_mountain_detail_page.dart';
 import 'package:mountain100/page/nfc/nfc_page.dart';
 
 import '../page/location/location_page.dart';
@@ -24,6 +25,7 @@ class Routes{
   static const String mapRoute = "/location";
   static const String comunityRoute = "/comunity";
   static const String writePostRoute = "/comunity/writePost";
+  static const String myMountainDetailRoute = "/main/myMountainDetail";
 
 }
 
@@ -38,6 +40,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_)=>TermPage());
       case Routes.joinRoute:
         return MaterialPageRoute(builder: (_)=>JoinPage());
+      case Routes.myMountainDetailRoute:
+        return MaterialPageRoute(builder: (_)=>MyMountainDetailPage());
       case Routes.userinfoInput:
         return MaterialPageRoute(builder: (_)=>UserInfoPage());
       case Routes.mainRoute:

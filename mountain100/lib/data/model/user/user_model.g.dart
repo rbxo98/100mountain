@@ -17,7 +17,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
           .map((e) => e as String?)
           .toList(),
       likePostList: (json['likePostList'] as List<dynamic>)
-          .map((e) => e as int?)
+          .map((e) => e as String?)
           .toList(),
       postList:
           (json['postList'] as List<dynamic>).map((e) => e as String?).toList(),

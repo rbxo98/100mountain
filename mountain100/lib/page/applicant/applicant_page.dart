@@ -98,6 +98,7 @@ class _ApplicantPageState extends ConsumerState<ApplicantPage>{
 
           TextField(
             controller: telController,
+            maxLength: 11,
             decoration: InputDecoration(
               hintText: "연락처",
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
