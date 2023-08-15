@@ -50,7 +50,7 @@ function CertComp(props) {
                                             <td ><Button variant="link">다운로드</Button></td>
                                         </tr>
                                     )
-                                }) : ""
+                                }) : null
                             }
                         </tbody>
                     </Table>

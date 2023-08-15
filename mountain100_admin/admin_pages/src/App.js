@@ -7,7 +7,8 @@ import NavbarHead from "./page/navBar";
 import Notice from './page/notice';
 import CertApply from './page/certApply';
 import CertComp from './page/certComp';
-import WaybillInfo from './page/waybilInfo';
+import {WaybillInfo} from './page/waybilInfo';
+import {Delivery} from './page/delivery';
 import SouvApply from './page/souvApply';
 import SouvProc from './page/souvProc';
 import SouvComp from './page/souvComp';
@@ -59,7 +60,7 @@ function App() {
 
   useEffect(() => {
       fetchWriteDT();
-  },[write]); //빈 배열로 마운트 될 때마다만 실행
+  },[write]); //빈 배열일땐 마운트 될 때마다만 실행
 
   useEffect(() => {
     fetchSouvApDT();
@@ -85,6 +86,7 @@ function App() {
     fetchQnA();
   },[QnAData]);
 
+
   return (
     
     <div className="App">
@@ -104,6 +106,7 @@ function App() {
         </Route>
         <Route path='/notice/:id' element={<Notice write = {write}/>}></Route>
         <Route path='/waybill' element={<WaybillInfo />}></Route>
+        <Route path='/delivery' element={<Delivery />}></Route>
         <Route path='*' element={<div>404 NOT FOUND</div>}>ERROR</Route> {/*404 ERROR*/}
       </Routes>
     </div>

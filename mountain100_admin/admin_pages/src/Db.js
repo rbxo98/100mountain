@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, query, where, getDocs, snapshot } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs, snapshot, doc, updateDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 
 
@@ -67,6 +67,39 @@ const getQnA = async (db) => {
   const Snapshot = await getDocs(QuestCol);
   const QuestList = Snapshot.docs.map(doc => doc.data());
   return QuestList;
+}
+
+
+export const updateWaybill = async (db, DocName, value) => {
+  const waybillRef = doc(db, "Souv", DocName);
+
+  // Set the "capital" field of the city 'DC'
+  await updateDoc(waybillRef, {
+    waybill: value,
+    info : "진행중"
+  });
+
+  return 1; //window close 전에 작업이 끝났음을 확인
+}
+
+export const updateSouvInfo = async (db, DocName) => {
+  const souvInfoRef = doc(db, "Souv", DocName);
+
+  // Set the "capital" field of the city 'DC'
+  await updateDoc(souvInfoRef, {
+    info : "완료"
+  });
+
+  return 1;
+}
+
+export const updateCertState = async (db, DocName) => {
+  const certStateRef = doc(db, "Cert", DocName);
+
+  // Set the "capital" field of the city 'DC'
+  await updateDoc(certStateRef, {
+    state : "완료"
+  });
 }
 
 

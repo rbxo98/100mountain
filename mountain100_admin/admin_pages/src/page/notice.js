@@ -11,7 +11,6 @@ import './css/home.css';
 
 function Notice(props) {
     let {id} = useParams();
-    console.log(props.write)
 
     return (
         <div id='top-notice'>
@@ -40,7 +39,7 @@ function Notice(props) {
                                         //비동기 처리, props를 받아온 이후 뜨게끔 변경
                                         let wirteDate = props.write[i].date.toDate().toDateString();
                                         return(
-                                            <tr>
+                                            <tr style={{verticalAlign:"middle"}}>
                                                 <td >{i+1}</td>
                                                 <td >{props.write[i].title}</td>
                                                 <td >{props.write[i].writer}</td>
@@ -48,7 +47,7 @@ function Notice(props) {
                                                 <td >{props.write[i].views}</td>
                                             </tr>
                                         )
-                                }) : ""
+                                }) : null
                                     }
                             </tbody>
                         </Table>

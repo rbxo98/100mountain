@@ -80,7 +80,7 @@ function Home(props) {
                                                 <td >{props.QnAData[i].views}</td>
                                             </tr>
                                         )
-                                    }) : ""
+                                    }) : null
                                 }
                             </tbody>
                         </Table>
@@ -115,7 +115,7 @@ function Home(props) {
                                             </tr>
                                         )
                                     
-                                    }): ""
+                                    }): null
                                 }
                             </tbody>
                         </Table>
