@@ -46,7 +46,6 @@ function SouvComp(props) {
                                             <td >{props.compData[i].address}</td>
                                             <td >{props.compData[i].tel}</td>
                                             <td >{props.compData[i].waybill}</td>
-                                            <td ><Button variant="primary">운송현황</Button></td>
                                         </tr>
                                     )
                                 }): null
@@ -58,5 +57,6 @@ function SouvComp(props) {
         </div>
     )
 }
+
 
 export default SouvComp;

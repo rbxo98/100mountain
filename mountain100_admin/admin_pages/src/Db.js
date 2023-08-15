@@ -78,6 +78,28 @@ export const updateWaybill = async (db, DocName, value) => {
     waybill: value,
     info : "진행중"
   });
+
+  return 1; //window close 전에 작업이 끝났음을 확인
+}
+
+export const updateSouvInfo = async (db, DocName) => {
+  const souvInfoRef = doc(db, "Souv", DocName);
+
+  // Set the "capital" field of the city 'DC'
+  await updateDoc(souvInfoRef, {
+    info : "완료"
+  });
+
+  return 1;
+}
+
+export const updateCertState = async (db, DocName) => {
+  const certStateRef = doc(db, "Cert", DocName);
+
+  // Set the "capital" field of the city 'DC'
+  await updateDoc(certStateRef, {
+    state : "완료"
+  });
 }
 
 

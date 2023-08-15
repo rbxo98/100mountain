@@ -24,7 +24,11 @@ export function WaybillInfo () {
 
 }
 
-export const setWaybill = (name, data) => { //db로 전송할 것.
-    console.log(name,data);
-    updateWaybill(db, name, data); //data 갱신
+export const setWaybill = async(name, data) => { //db로 전송할 것.
+    //console.log(name,data);
+    const isOk = updateWaybill(db, name, data); //data 갱신
+    console.log(isOk)
+    if (await isOk) {
+        window.close()
+    }
 }

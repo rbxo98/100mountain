@@ -41,6 +41,8 @@ function SouvProc(props) {
                         <tbody>
                             {
                                 props.predData ? props.predData.map((a, i) => {
+                                    let deliveryDate = props.predData[i].date.toDate().toDateString();
+                                    console.log(deliveryDate)
                                     return(
                                         <tr style={{verticalAlign:"middle"}}> 
                                             <td >{i+1}</td>
@@ -48,7 +50,7 @@ function SouvProc(props) {
                                             <td >{props.predData[i].address}</td>
                                             <td >{props.predData[i].tel}</td>
                                             <td >{props.predData[i].waybill}</td>
-                                            <td ><Button variant="primary">운송현황</Button></td>
+                                            <td ><Button onClick={() => {PopupDeliveryWindow(props.predData[i].nickname, props.predData[i].waybill, deliveryDate)}}variant="primary">운송현황</Button></td>
                                         </tr>
                                     )
                                 }): null
@@ -59,6 +61,11 @@ function SouvProc(props) {
             </Row>
         </div>
     )
+}
+
+const PopupDeliveryWindow = (nickname,waybill,date) => {
+    const url = `/Delivery?data=${[nickname,waybill,date]}`;
+    window.open(url,"_black", "width=700, height=250, left=30, top=30, scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no");
 }
 
 export default SouvProc;

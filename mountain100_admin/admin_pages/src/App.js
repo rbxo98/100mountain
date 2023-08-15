@@ -8,6 +8,7 @@ import Notice from './page/notice';
 import CertApply from './page/certApply';
 import CertComp from './page/certComp';
 import {WaybillInfo} from './page/waybilInfo';
+import {Delivery} from './page/delivery';
 import SouvApply from './page/souvApply';
 import SouvProc from './page/souvProc';
 import SouvComp from './page/souvComp';
@@ -105,6 +106,7 @@ function App() {
         </Route>
         <Route path='/notice/:id' element={<Notice write = {write}/>}></Route>
         <Route path='/waybill' element={<WaybillInfo />}></Route>
+        <Route path='/delivery' element={<Delivery />}></Route>
         <Route path='*' element={<div>404 NOT FOUND</div>}>ERROR</Route> {/*404 ERROR*/}
       </Routes>
     </div>

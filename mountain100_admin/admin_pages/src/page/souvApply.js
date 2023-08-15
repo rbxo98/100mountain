@@ -45,7 +45,7 @@ function SouvApply(props) {
                                         <td >{props.applyData[i].address}</td>
                                         <td >{props.applyData[i].tel}</td>
                                         <td >{props.applyData[i].waybill}</td>
-                                        <td ><Button  variant="primary" onClick={() => PopupWindow(props.applyData[i].nickname)}>배달하기</Button></td>
+                                        <td ><Button  variant="primary" onClick={() => PopupWaybillWindow(props.applyData[i].nickname)}>배달하기</Button></td>
                                         {/*해당 url로 nickname 전달*/}
                                     </tr>
                                 )
@@ -59,7 +59,7 @@ function SouvApply(props) {
     )
 }
 
-const PopupWindow = (nickname) => {
+const PopupWaybillWindow = (nickname) => {
         const url = `/waybill?data=${nickname}`;
         window.open(url,"_black", "width=700, height=200, left=30, top=30, scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no");
     }

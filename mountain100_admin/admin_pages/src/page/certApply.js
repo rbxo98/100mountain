@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { useState } from "react";
 import './css/cert.css';
 import { FormCheck } from 'react-bootstrap';
+import {db, updateCertState} from './../Db';
 
 
 function CertApply(props) {
@@ -41,14 +42,16 @@ function CertApply(props) {
                         <tbody>
                             {
                                 props.aplCertData ? props.aplCertData.map((a, i) => {
-                                    let certDate = props.aplCertData[i].date.toDate().toDateString();
+                                     let certDate = props.aplCertData[i].date.toDate().toDateString();
                                     return(
                                         <tr style={{verticalAlign:"middle"}}> 
                                             <td><FormCheck /></td>
                                             <td >{props.aplCertData[i].name}</td>
                                             <td >{props.aplCertData[i].grade}</td>
                                             <td >{certDate}</td>
-                                            <td ><Button variant="link" >발급하기</Button></td>
+                                            <td ><Button variant="link" onClick={() => {
+                                                updateCertState(db, props.aplCertData[i].nickname);
+                                            }}>발급하기</Button></td>
                                         </tr>
                                     )
                                 }) : null
@@ -62,6 +65,5 @@ function CertApply(props) {
 
     )
 }
-
 
 export default CertApply;
