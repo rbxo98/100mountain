@@ -1,6 +1,7 @@
 # ※ 모의 앱으로, 주요 기능 중 일부는 실제 제공되는 서비스가 아님
-# Mountain100
+# Mountain100 (제 2회 광주전남 개발자대회 최우수상 수상작)
 - 국내 100대 명산에 대한 정보 제공, 스탬프 수집 앱
+- gjit.kr
 ## 팀원
 * 박규태 (25, 개발자 0년)
 * 성승제 (29, 컴퓨터공학과 대학원생)
@@ -37,5 +38,5 @@
 <a href="https://www.flaticon.com/kr/free-icons/" title="로딩 아이콘">로딩 아이콘  제작자: Krystsina Mikhailouskaya - Flaticon</a>
 <a href="https://www.flaticon.com/kr/free-icons/" title="신청 아이콘">신청 아이콘  제작자: Muhammad Ali - Flaticon</a>
 
-## 제 2회 광주전남 개발자대회 최우수상 수상작
+
 
